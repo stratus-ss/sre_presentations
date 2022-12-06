@@ -1,0 +1,162 @@
+<html lang="en">
+    <!-- 
+        Throughout this slide deck you will see a lot of empty div's. This is because I am using custom css grids with the following spacing:
+        1fr 10fr 1fr
+        This is to help deal with different screen/projector resolutions. It makes the code look slightly messy but I always want the main elements 
+        in the middle div so that it displays correctly. This is my first attempt at html/css in over 10 years. I am sure there are a lot of things 
+        that could be improved upon
+    -->
+    <head>
+        <title>SRE Journey</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=1024">
+        <meta name="author" content="Steve Ovens">
+        <!-- I am using the css available from the impress.js github-->
+        <link href="css/impress-demo.css" rel="stylesheet">
+        <link href="css/classic-slides.css" rel="stylesheet">
+        <link href="css/mermaid.forest.css" rel="stylesheet">
+        <link href="css/github.css" rel="stylesheet">
+        <!-- These are my local css styles -->
+        <link href="css/local_custom.css" rel="stylesheet">
+    </head>
+    <!-- This is required for impress.js to work properly-->
+    <body class="impress-not-supported" style="background-color: darkgray;">
+        <!-- Set a fall back message. I am using the one from the demo because... why not?-->
+        <div class="fallback-message">
+            <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+            <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+        </div>
+
+        <div id="impress" style="perspective: 1000px;">
+            
+            <div id="sre_journey" class="backgroundSettings step slide" data-x="0" data-y="0" data-z="0">
+                <div class="centre whiteText"><b>SRE Is A Journey</b></div>
+                <div class="notes">
+                    <p>Google has had many years and a large budget to get to where they are</p>
+                    <p>You don't have to do everything in the SRE book</p>
+                    <p>at least not at first...</p>
+                </div>
+            </div>
+
+            
+            <div id="journey_quote" class="step" data-x="-7200" data-y="6800" data-z="4000">
+                <div>
+                    <img src="images/journey_quote.jpg" style="height: 100%; width: 100%; position: relative;" >                
+                </div>
+            </div>
+
+            <div id="office_chaos" class="slide step rippleBackgroundSettings"  data-x="-6200" data-y="4500" data-z="4000">
+                <div>
+                    <div class="topCentre whiteText"><b>Where To Begin?</b></div>
+                </div>
+                <div>
+                    <img src="images/office_chaos.jpg" style="height: 70%; width: 100%; position: relative; top: 3em " >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>SRE is not a zero sum game... You don't have to tackle it all at once</p>
+                    <p>Balancing too much at once can be counter productive</p>
+                </div>
+            </div>
+            
+            <div id="context_switching1" class="slide step rippleBackgroundSettings"  data-x="-9600" data-y="5000" data-z="4000 data-rotate-x="180" data-rotate-y="00" data-rotate-z="300" data-rotate-order="xyz">
+                <div class="topCentre whiteText"><b>Context Switching Is Bad...</b></div>
+                <div>
+                    <img src="images/context_switching.png" style="height: 70%; width: 100%; position: relative; top: 2em;" >
+                </div>
+                <div class="notes">
+                    <p>In a multitasking context, it refers to the process of storing the system state for one task, so that task can be paused and another task resumed.</p>
+                    <p> A context switch can also occur as the result of an interrupt, such as when a task needs to access disk storage, freeing up CPU time for other tasks</p>
+                    <p>In human terms, someone walking up to your desk, stopping to look at a notification or other distractions are forms of context switching</p>
+                </div>
+            </div>
+
+            <div id="manual" class="slide step rippleBackgroundSettings"  data-x="-8200" data-y="5000" data-z="4000" data-rotate-x="180" data-rotate-y="00" data-rotate-z="300" data-rotate-order="xyz">
+                <div class="topCentre whiteText"><b>Context Switching Is Super Bad...</b></div>
+                <div>
+                    <img src="images/ProgrammerInterrupted-1.png" style="height: 70%; width: 31%; position: relative; top: 2em;  left: 1em" >
+                    <img src="images/ProgrammerInterrupted-2.png" style="height: 70%; width: 31%; position: relative; top: 2em ;  left: 1em" >
+                    <img src="images/ProgrammerInterrupted-3.png" style="height: 70%; width: 31%; position: relative; top: 2em ;  left: 1em" >
+                </div>
+                <div class="notes">
+                    <p>Our brains aren't made to multi-task</p>
+                    <p>You can get better at it, but it still causes massive fatigue</p>
+                    <p>It takes an average of 23 minutes to return to work after being interupted</p>
+                </div>
+            </div>
+
+
+            <div id="hands_on" class="slide step squaresBackgroundSettings"  data-x="-7200" data-y="3000" data-z="4000">
+                <div>
+                    <div class="topCentre whiteText"><b>Let's Practice!</b></div>
+                </div>
+                <div>
+                    <img src="images/exercise_time.jpg" style="height: 90%; width: 100%; position: relative;  " >
+                </div>
+                <div></div>
+            </div>
+
+            <div id="breaking_news" class="slide step purpleBackgroundSettings" data-x="0" data-y="1200" data-z="100">
+                <div>
+                    <div class="topCentre whiteText"><b>Reports From The Field</b></div>
+                </div>
+                <div>
+                    <img src="images/breaking-news1.png" style="height: 70%; width: 100%; position: relative; top: 2em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Tell a personal experience</p>
+                    <p>Even with good intentions and motivation, attempting to tackle more than you can handle 
+                        almost always goes sideways
+                    </p>
+                    <p>Meantion some approaches to get out of the situation</p>
+                    <p>Share stories where things might not have worked out</p>
+                </div>
+            </div>
+
+
+            <div id="foundation" class="slide step sunBackgroundSettings" data-x="2500" data-y="3600" data-z="600">
+                <div>
+                    <div class="topCentre redText"><b>Build A Solid Foundation</b></div>
+                </div>
+                <div>
+                    <img src="images/lego-building-block.jpg" style="height: 70%; width: 100%; position: relative; top: 2em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Don't set yourself up for failure! Make sure that there is buy-in</p>
+                    <p>Start by identifying the most useful practices for your org</p>
+                    <p>Make sure you know where you are going. Set a goal and head for it</p>
+                </div>
+            </div>
+            <div id="better_future" class=" step " data-x="3000" data-y="1200" data-z="11100">
+
+                <div>
+                    <img src="images/peterson_better_future.png" style="height: 100%; width: 100%; position: relative;" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Quote by Jordan Peterson</p>
+                </div>
+            </div>
+            <div id="end" class=" step " data-x="0" data-y="4200" data-z="100">
+                <div>
+                    <img src="images/the_end_movie.png" style="height: 100%; width: 100%; position: relative;" >
+                </div>
+                <div></div>
+            </div>
+            <div id="is_it" class=" step " data-x="500" data-y="800" data-z="1100" data-rotate-x="180" data-rotate-y="00" data-rotate-z="300" data-rotate-order="xyz">
+                <div class="redText topCentre"><b>Or Is It...?</b></div>
+            </div>
+
+            <!-- These load the actual JS. In this case a relative path to a js folder-->
+            <script src="js/impress.js"></script>
+            <script src="js/highlight.pack.js"></script>
+            <script>impress().init();</script>
+            <script>hljs.initHighlightingOnLoad();</script>
+    
+
+
+        </div>
+    </body
+></html>

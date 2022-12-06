@@ -1,0 +1,280 @@
+<html lang="en">
+    <!-- 
+        Throughout this slide deck you will see a lot of empty div's. This is because I am using custom css grids with the following spacing:
+        1fr 10fr 1fr
+        This is to help deal with different screen/projector resolutions. It makes the code look slightly messy but I always want the main elements 
+        in the middle div so that it displays correctly. This is my first attempt at html/css in over 10 years. I am sure there are a lot of things 
+        that could be improved upon
+    -->
+    <head>
+        <title>Defining TOIL</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=1024">
+        <meta name="author" content="Steve Ovens">
+        <!-- I am using the css available from the impress.js github-->
+        <link href="css/impress-demo.css" rel="stylesheet">
+        <link href="css/classic-slides.css" rel="stylesheet">
+        <link href="css/mermaid.forest.css" rel="stylesheet">
+        <link href="css/github.css" rel="stylesheet">
+        <!-- These are my local css styles -->
+        <link href="css/local_custom.css" rel="stylesheet">
+    </head>
+    <!-- This is required for impress.js to work properly-->
+    <body class="impress-not-supported">
+        <!-- Set a fall back message. I am using the one from the demo because... why not?-->
+        <div class="fallback-message">
+            <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+            <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+        </div>
+
+        <div id="impress" style="perspective: 1000px;">
+            
+            <div id="what_is_toil" class="backgroundSettings step slide" data-x="0" data-y="0" data-z="0">
+                <div class="centre whiteText"><b>What Is Toil?</b>
+                </div>
+            </div>
+
+            <div id="poll" class="backgroundSettings step slide" data-x="1290" data-y="1000" data-z="200">
+                <div class="topCentre whiteText"><b>http://etc.ch/fjqq</b>
+                    <object style="position: relative; left: 3.5em; top: 1em" type="text/html" data="http://etc.ch/fjqq/?qr" width="1000px" height="700px"></object>
+
+                </div>
+            </div>
+
+            <div id="whoPoll" class="wrapper step" data-x="3000" data-y="8900" data-z="3000">
+                <object style="position: relative; right: 1em" type="text/html" data="https://directpoll.com/r?XDbzPBd3ixYqg86DUVNwGwLtjYYDjuSylDr4T9TA" width="1024px" height="768px">
+                </object>
+            </div>
+
+            <div id="google" class="step" data-x="-7200" data-y="6800" data-z="4000">
+                <div>
+                    <img src="images/google-sre_533x700.jpg" style="height: 100%; width: 60%; position: relative; left: 2em " >                
+                </div>
+            </div>
+
+            <div id="manual" class="slide step rippleBackgroundSettings"  data-x="-7200" data-y="5000" data-z="4000">
+                <div>
+                    <div class="topCentre whiteText"><b>Manual Work</b></div>
+                </div>
+                <div>
+                    <img src="images/manual-process.gif" style="height: 70%; width: 100%; position: relative; top: 3em " >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Work that done by hand</p>
+                    <p>A disk fills up and someone has to log in to clear the logs</p>
+                </div>
+            </div>
+            
+            <div id="repetitive" class="slide step squaresBackgroundSettings"  data-x="-7200" data-y="3000" data-z="4000">
+                <div>
+                    <div class="topCentre whiteText"><b>Repetitive Work</b></div>
+                </div>
+                <div>
+                    <img src="images/simpsons_repetitive.gif" style="height: 90%; width: 100%; position: relative;  " >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Work that is done over and over</p>
+                    <p>Chances are that the disks will continue to fill up and continue to need to be purged</p>
+                </div>
+            </div>
+
+            <div id="reactive" class="slide step purpleBackgroundSettings" data-x="0" data-y="1200" data-z="100">
+                <div>
+                    <div class="topCentre white"><b>Reactive Work</b></div>
+                </div>
+                <div>
+                    <img src="images/moss_fire.gif" style="height: 70%; width: 100%; position: relative;  " >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Spend most of your time firefighting</p>
+                    <p>Technical debt just piles up</p>
+                </div>
+            </div>
+
+
+            <div id="no_value" class="slide step sunBackgroundSettings" data-x="2500" data-y="3600" data-z="600">
+                <div>
+                    <div class="topCentre redText"><b>Lacks Enduring Value</b></div>
+                </div>
+                <div>
+                    <img src="images/lack_value.gif" style="height: 70%; width: 60%; position: relative;  left: 7em; top: 2em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>doing this type of work over and over provides no actual value</p>
+                    <p>Often there is no sense of satisfaction from doing this work </p>
+                    <p>This can lead to unexpected problems down the line... you don't have a sense of accomplishment</p>
+                    <p>Can lead to problems getting missed because of Alert Fatigue </p>
+                    <p>Its draining to have an item that says its an error but isn't actually an error</p>
+                </div>
+            </div>
+
+            <div id="growth" class="slide step purpleBackgroundSettings" data-x="0" data-y="2200" data-z="100">
+                <div>
+                    <div class="topCentre redText"><b>Grows As Fast As Source</b></div>
+                </div>
+                <div>
+                    <img src="images/graph_rising.gif" style="height: 70%; width: 100%; position: relative;  top: 2em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>toil tends to grow as fast as the source</p>
+                    <p>Human resources scale almost linearly with machine resources</p>
+                    <p> in the old way, add hardware & and people they scale together</p>
+                    <p>Some things scale linearily such as the time spent performing hardware repairs</p>
+                </div>
+            </div>
+            <div id="how_bad" class="slide step squaresBackgroundSettings" data-x="0" data-y="4200" data-z="100">
+                <div>
+                    <div class="topCentre whiteText"><b>Just How Bad Is TOIL???</b></div>
+                </div>
+                <div>
+                    <img src="images/thumbs_up_down.jpg" style="height: 70%; width: 100%; position: relative;  top: 2em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Many think toil is terrible and you should aim for no toil... that's not the case</p>
+                    <p>There are real business costs (such as hours to sustain an enviornment) for too much toil</p>
+                </div>
+            </div>
+            <div id="no_progress" class="slide step sunBackgroundSettings" data-x="0" data-y="4200" data-z="1500">
+                <div>
+                    <div class="topCentre redText"><b>No Career Progression</b></div>
+                </div>
+                <div>
+                    <img src="images/progression.png" style="height: 70%; width: 100%; position: relative;  top: 2em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>No sense of satisfaction</p>
+                    <p>No growth</p>
+                    <p>Few people want to be technical janitors</p>
+                    <p>You don't feel like you are progressing if you are handling repetitive tasks</p>
+                </div>
+            </div>
+            <div id="low_moral" class="slide step purpleBackgroundSettings" data-x="1500" data-y="4200" data-z="100">
+                <div>
+                    <div class="topCentre whiteText"><b>Morale Suffers...</b></div>
+                </div>
+                <div>
+                    <img src="images/beatings_continue.jpg" style="height: 70%; width: 100%; position: relative;  top: 2em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Without progress morale drops</p>
+                </div>
+            </div>
+            <div id="attrition" class="slide step sunBackgroundSettings" data-x="3000" data-y="4200" data-z="100" data-rotate-x="180" data-rotate-y="00" data-rotate-z="300" data-rotate-order="xyz">
+                <div>
+                    <div class="topCentre redText"><b>People Start To Leave...</b></div>
+                </div>
+                <div>
+                    <img src="images/attrition.jpg" style="height: 70%; width: 100%; position: relative;  top: 2em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Talent will leave for greener pastures</p>
+                    <p>You'll be left with either people of low self esteem or no other options</p>
+                </div>
+            </div>
+            <div id="lack_of_value" class="slide step squaresBackgroundSettings" data-x="4000" data-y="5900" data-z="100" data-rotate-x="180" data-rotate-y="00" data-rotate-z="300" data-rotate-order="xyz">
+                <div>
+                    <div class="topCentre whiteText"><b>Teams Throw Things Over Walls</b></div>
+                </div>
+                <div>
+                    <img src="images/grenade_over_wall.jpg" style="height: 70%; width: 100%; position: relative;  top: 2em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Lack of respect can lead to throwing code over the wall</p>
+                    <p>Devs need to push a feature... it works on my machine but not in prod...</p>
+                    <p>Groups that do the grunge & toil work often end up cleaning up for others</p>
+                    <p>Ops usually bears the brunt of the work when something fails in prod</p>
+                </div>
+            </div>
+            <div id="calc_toil" class="slide step purpleBackgroundSettings" data-x="4000" data-y="5900" data-z="100" data-rotate-x="90" data-rotate-y="90" data-rotate-z="300" data-rotate-order="xyz">
+                <div>
+                    <div class="topCentre whiteText"><b>How To Calculate Toil?</b></div>
+                </div>
+                <div>
+                    <img src="images/calculate.jpg" style="height: 70%; width: 100%; position: relative;  top: 2em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>It's hard to calculate toil... it's often done without thinking</p>
+                    <p>Being a good team member can cause significant toil</p>
+                    <p>Toil is often dealing with interrupts. People walking up to the desk constantly is TOIL</p>
+                    
+                </div>
+            </div>
+            <div id="time_track" class="slide step rippleBackgroundSettings" data-x="4000" data-y="6900" data-z="700" data-rotate-x="90" data-rotate-y="90" data-rotate-z="300" data-rotate-order="xyz">
+                <div>
+                    <div class="topCentre whiteText"><b>How To Calculate Toil?</b></div>
+                </div>
+                <div>
+                    <img src="images/time_tracking.jpg" style="height: 70%; width: 100%; position: relative;  top: 2em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Tracking the dedicated team member's time can give insight</p>
+                    <p>Most systems have a time estimating section that can be enabled... use it</p>
+                    <p>You could dedicate one person on the team to deal with all non-project work</p>
+                    <p>Pheonix Project?</p>
+                </div>
+            </div>
+            <div id="sort" class="slide step backgroundSettings" data-x="4000" data-y="1000" data-z="1100" data-rotate-x="90" data-rotate-y="90" data-rotate-z="300" data-rotate-order="xyz">
+                <div>
+                    <div class="topCentre whiteText"><b>How To Calculate Toil?</b></div>
+                </div>
+                <div>
+                    <img src="images/sort_into_columns.jpg" style="height: 70%; width: 100%; position: relative;  top: 2em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>sorting work into categories help to identify anomolies</p>
+                    <p>also helps classify types of work being done</p>
+                    <p> using something like “unplanned work” label can reveal a lot about activities that are eating up time</p>
+                </div>
+            </div>
+
+            <div id="what_is_toil2" class="backgroundSettings step slide" data-x="4000" data-y="2000" data-z="1100" data-rotate-x="90" data-rotate-y="90" data-rotate-z="300" data-rotate-order="xyz">
+                <div class="centre whiteText"><b>What Is Toil (Revised?)</b>
+                </div>
+                <div class="notes">
+                    <p>toil.ocp4.online app</p>
+                </div>
+            </div>
+
+            <div id="poll2" class="backgroundSettings step slide" data-x="4000" data-y="1000" data-z="3100" data-rotate-x="90" data-rotate-y="90" data-rotate-z="300" data-rotate-order="xyz">
+                <div class="topCentre whiteText"><b>http://etc.ch/WhPk</b>
+                    <object style="position: relative; left: 3.5em; top: 1em " type="text/html" data="http://etc.ch/WhPk/?qr" width="1024px" height="768px"></object>
+
+                </div>
+            </div>
+            <div id="whatisPoll2" class="wrapper step" data-x="4000" data-y="1000" data-z="5100" data-rotate-x="90" data-rotate-y="90" data-rotate-z="300" data-rotate-order="xyz">
+                <object style="position: relative; right: 4em" type="text/html" data="https://directpoll.com/r?XDbzPBd3ixYqg86DUVNwGwLtjYYDjuSylDr4T9TA" width="600px" height="768px">
+                </object>
+                <object style="position: relative; right: 4em" type="text/html" data="https://directpoll.com/r?XDbzPBd3ixYqg8n4uSAYOsUFBVejZoCrHqWw7lEnL" width="600px" height="768px">
+                </object>
+            </div>
+
+            <div id="end" class="step" data-x="4000" data-y="2000" data-z="2100" data-rotate-x="90" data-rotate-y="90" data-rotate-z="300" data-rotate-order="xyz">
+                <div>
+                    <img src="images/the_end.jpg" style="height: 100%; width: 100%;" >
+                </div>
+                <div></div>
+                <div class="notes">
+                </div>
+            </div>
+            <!-- These load the actual JS. In this case a relative path to a js folder-->
+            <script src="js/impress.js"></script>
+            <script src="js/highlight.pack.js"></script>
+            <script>impress().init();</script>
+            <script>hljs.initHighlightingOnLoad();</script>
+    
+        </div>
+    </body
+></html>

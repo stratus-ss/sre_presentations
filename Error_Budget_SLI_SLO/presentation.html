@@ -1,0 +1,499 @@
+<html lang="en">
+    <!-- 
+        Throughout this slide deck you will see a lot of empty div's. This is because I am using custom css grids with the following spacing:
+        1fr 10fr 1fr
+        This is to help deal with different screen/projector resolutions. It makes the code look slightly messy but I always want the main elements 
+        in the middle div so that it displays correctly. This is my first attempt at html/css in over 10 years. I am sure there are a lot of things 
+        that could be improved upon
+    -->
+    <head>
+        <title>Error Budgets</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=1024">
+        <meta name="author" content="Steve Ovens">
+        <!-- I am using the css available from the impress.js github-->
+        <link href="css/impress-demo.css" rel="stylesheet">
+        <link href="css/classic-slides.css" rel="stylesheet">
+        <link href="css/mermaid.forest.css" rel="stylesheet">
+        <link href="css/github.css" rel="stylesheet">
+        <link href="css/substeps.css" rel="stylesheet">
+
+        <!-- These are my local css styles -->
+        <link href="css/local_custom.css" rel="stylesheet">
+        
+    </head>
+    <!-- This is required for impress.js to work properly-->
+    <body class="impress-not-supported" style="background-color: rgb(44, 44, 44);">
+        <!-- Set a fall back message. I am using the one from the demo because... why not?-->
+        <div class="fallback-message">
+            <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+            <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+        </div>
+
+        <div id="impress" style="perspective: 1000px;">
+            
+            <div id="intro" class="backgroundSettings step slide" data-x="-25000" data-y="0">
+                <div class="topCentre whiteText"><b>Error Budgets: What Are We Measuring?</b></div>
+                <div>
+                    <img src="images/budget.jpg" style="height: 70%; width: 80%; position: relative; left: 4em; top: 1em" >   
+                </div>
+                <div class="notes">
+                </div>
+            </div>
+        
+ 
+            <div id="components_of_budget" class="backgroundSettings step slide" data-x="-15000" data-y="5000" data-rotate="150">
+                <div class="topCentre whiteText"><b>What Makes Up The Budget?</b></div>
+                <div>
+                    <p class="substep " style="font-size: 2.05em; text-align: left; position: relative; top: 1em; color:aquamarine"> Define Availability</p>
+                    <p class="substep " style="font-size: 2.05em; text-align: left; position: relative; top: 1em; color:aquamarine"> Measure Availability</p>
+                    <p class="substep " style="font-size: 2.05em; text-align: left; position: relative; top: 1em; color:aquamarine"> Outline Consequences</p>
+                </div>
+                <div class="notes">
+                    <p>* Need to define availability in the context of the application (more on this later)</p>
+                   <p> * After it's defined we have to figure out how & where to take measurements</p>
+                   <p> * Finally we have to decide what we will do if we do better or worse than we expect</p>
+                </div>
+            </div>
+          
+
+            <div id="slis" class="darkWithSpotsSettings step slide" data-x="0" data-y="0" data-z="0">
+                <div class="topCentre whiteText"><b>Defining Availability: SLIs</b></div>
+                <div>
+                    <img src="images/DefineGoals.gif" style="height: 70%; width: 80%; position: relative; left: 4em; top: 1.5em" >   
+                </div>
+                <div class="notes">
+                   <p> * Service Level Indicator</p>
+                   <p> * This is a definition of what success looks like per transaction</p>
+                   <p> * Usually includes a measurement of time, an availability goal and where the measurement is taken from</p>
+                   <p> * Every SLI is a metric but <b>NOT</b> every metric is an SLI (or should be) </p>
+                </div>
+            </div>
+
+
+            <div id="sli_examples" class="squaresBackgroundSettings step" data-x="-1900" data-y="1200" data-z="100">
+                <div class="topCentre whiteText"><b>Some Examples</b></div>
+                <img src="images/types_of_slis_v.png" style="height: 70%; width: 80%; position: relative; left: 2em; top: 0.5em" > 
+                <div class="whiteText" style="font-size: 0.3em; position: relative; top: 1.7em; left: 8em"> Graphic Credit: David Edelman</div>
+                <div class="notes">
+                    <p>Freshness, correctness, throughput, availability, durability, quality, coverage, latency all make up reliability</p>
+                   <p> * Durability - am I getting out the same thing I Put in?</p>
+                   <p> * Quality - are you delivering part of or all of the experience?</p>
+                   <p> * There are many ways to measure reliability but almost none of them are "up" or "down"</p>
+                   <p> -- We will have a look at a table of common SLIs in a little bit...</p>
+                </div>
+            </div>
+
+
+            <div id="pizza_sli" class="darkWithSpotsSettings step" data-x="0" data-y="1200" data-z="100">
+                <div class="topCentre redText"><b>Our Sample Business</b></div>
+                <img src="images/pizza-delivery-scooter.png" style="height: 70%; width: 80%; position: relative; left: 4em; top: 1.5em" > 
+                
+                <div class="notes">
+                    <p>We have a pizza business that offers delivery. We have multiple locations in the city and we accept orders only from one of our online portals in able to stream line the process.</p>
+                    <p>We are open 12PM - 12AM in 2 shifts: 12PM - 6PM and 6PM - 12AM</p>
+                    <p>In a 6 hour window we are measuring the number of deliveries. In order to be successful the pizza must be delivered in less than 60 minutes as measured by the GPS in the delivery vehicle.</p>
+                    <p>A successful shift is one that has a 95% success rate.</p>
+                </div>
+            </div>
+
+            <div id="not_permformance" class="step" style="color: black" data-x="5500" data-y="4500" data-z="300">
+                <div class="topCentre redText"><b>Do Not Confuse With Performance!</b></div>
+
+                
+                <div class="notes">
+                   <p> * KPIs/SLIs are often confused with performance metrics.</p>
+                   <p> * They are not the same thing</p>
+                   <p> * The speed of delivery vehicles can be a performance metric</p>
+                </div>
+            </div>
+
+
+            <div id="define_user" class="rippleBackgroundSettings step" data-x="2500" data-y="3600" data-z="600">
+                <div class="topCentre redText"><b>Who is the user?</b></div>
+                <img src="images/Monthly-active-users.jpg" style="height: 80%; width: 90%; position: relative; left: 1em; " > 
+                
+                <div class="notes">
+                   <p> * Its very important to know who your user is.</p>
+                   <p> * What is the point of your service?</p>
+                </div>
+            </div>
+
+            <div id="sli_based_on_user" class="rippleBackgroundSettings step" data-x="1700" data-y="4700" data-z="1300">
+                <div class="topCentre redText"><b>SLIs: Defined By The User</b></div>
+                <img src="images/Simpsons_KOTH2.gif" style="height: 60%; width: 90%; position: relative; left: 1em; " > 
+                
+                <div class="notes">
+                   <p> * Some users are more decerning than others</p>
+                   <p> * There are lots of things between the user and your service</p>
+                   <p> * Your SLI should not be greater than other dependencies!</p>
+                </div>
+            </div>
+            
+            <div id="sli_ratio" class="rippleBackgroundSettings step" data-x="1700" data-y="5800" data-z="2000" style="opacity: 1">
+                <div class="topCentre redText"><b>SLI Equation</b></div>
+                <div>
+                    <img src="images/SLI_equation.png" style="height: 70%; width: 70%; position: relative;  left: 3em; top: 1em" >
+                </div>
+                
+                <div class="notes">
+                   <p> * The equation is pretty basic</p>
+                   <p> * Its often thought of as a ratio</p>
+                </div>
+            </div>
+            
+            <div id="dont_forget" class="slide step purpleBackgroundSettings" data-x="1700" data-y="6900" data-z="3000" >
+                <div class="topCentre redText"><b>Don't Forget...</b></div>
+                <div>
+                    <img src="images/questions.gif" style="height: 70%; width: 70%; position: relative;  left: 5em; top: 2em" >
+                </div>
+                
+                <div class="notes">
+                   <p> * It's important to note these questions when constructing an SLI</p>
+                   <p> * Who is the user</p>
+                   <p> * What are we capturing</p>
+                   <p> * Where are we capturing them</p>
+                   <p> * When (time frame) are we measuring</p>
+                   <p> * How are we capturing</p>
+                   <p> * Why specifically these are being captured (its not ok to say because we did in the past!)</p>
+
+                </div>
+            </div>   
+            
+            <div id="trust_key" class="darkWithSpotsSettings step" data-x="4000" data-y="6900" data-z="3000">
+                <div class="topCentre redText"><b>Trust Your Monitoring</b></div>
+                <div>
+                    <img src="images/trust.jpg" style="height: 70%; width: 80%; position: relative;  left: 2em; top: 1em" >
+                </div>
+                <div class="notes">
+                    <p>When you're in peril, you have to be able to trust in your monitoring to save you</p>
+                    <p>False alerts, missing data, inconsistantly applied policies... all these things make your system untrustable</p>
+                </div>
+            </div>
+
+            <!--
+            <div id="balancing" class="purpleBackgroundSettings step" data-x="0" data-y="2900" data-z="0">
+                <div class="topCentre redText"><b>It's A Balancing Act...</b></div>
+                <div>
+                    <img src="images/balacing_act.png" style="height: 70%; width: 90%; position: relative;  left: 1em; top: 1em" >
+                </div>
+                
+                <div class="notes">
+                    <p>It's always a balancing act between coverage, accuracy and cost</p>
+                </div>
+            </div>
+            -->
+
+            <div id="common_slis1" class="squaresBackgroundSettings step" data-x="0" data-y="900" data-z="-4000">
+                <div class="topCentre redText"><b>Some Common SLIs</b></div>
+                
+                <div>
+                    <img src="images/sli_chart1.png" style="height: 70%; width: 90%; position: relative;  left: 1em; top: 1em" >
+                </div>
+                <div class="notes">
+                    <p>Durability: Take particular care with durability SLIs: the data that the user wants may be only a small portion of the data that is stored. </p>
+                    <p>Quality: For example, if the User Data store is unavailable, the game is still playable but uses generic imagery.</p>
+                </div>
+            </div>
+
+            <div id="common_slis2" class="squaresBackgroundSettings step" data-x="0" data-y="2900" data-z="-4000">
+                <div class="topCentre redText"><b>Some Common SLIs</b></div>
+                <div>
+                    <img src="images/sli_chart2.png" style="height: 70%; width: 90%; position: relative;  left: 1em; top: 1em" >
+                </div>
+                <div class="notes">
+                    <p>Freshness: Ideally this metric counts how many times a user accessed the data, so that it most accurately reflects the user experience</p>
+                    <p>Coverage: For batch processing, the proportion of jobs that processed above some target amount of data. For streaming processing, the proportion of incoming records that were successfully processed within some time window.</p>
+                </div>
+            </div>
+
+            <div id="min_acceptance" class="purpleBackgroundSettings step" data-x="0" data-y="-150" data-z="-4000">
+                <div class="topCentre redText" style="font-size: 1.4em"><b>Maximum Effort Not Required!</b></div>
+
+                <div>
+                    <img src="images/maximum_effort.gif" style="height: 70%; width: 90%; position: relative;  left: 1em; top: 1em" >
+                </div>
+                <div class="notes">
+                    <p>We are shooting for just enough reliability. </p>
+                    <p>Ideally we have the minimum user acceptance</p>
+                </div>
+            </div>
+
+            <div id="SLOs" class="step" data-x="1900" data-y="-150" data-z="-8000">
+                <div class="topCentre redText"><b>Service Level Objectives</b></div>
+
+                
+                <div class="notes">
+                    <p>* Your SLOs are essentially a culmination of your SLIs in a given time frame</p>
+                    <p>* In our simplified Pizza example our SLO is going to be the number of successful shifts / the total number of shifts. In a 1 month period this should be 98% of the shifts were marked as successful  </p>
+                    <p>* It's very important to set your SLOs appropriately as they make up the basis for your error budget</p>
+                </div>
+            </div>
+
+            <div id="not_in_vacuum" class="step" data-x="0" data-y="9800" data-z="0" data-scale="3">
+                <div>
+                    <img src="images/operate_in_vacuum.jpg" style="height: 140%; width: 90%; position: relative;  left: 1em; top: 1em" >
+                </div>
+                <div class="notes">
+                    <p>Users rarely experience the service the way you do</p>
+                    <p>You have external dependencies that impact your SLOs</p>
+                </div>
+            </div>
+
+            <div id="numbers" class="darkWithStripesSettings step" data-x="-9200" data-y="6800" data-z="-3000">
+                <div class="topCentre whiteText"><b>How People Have Done This In the Past...</b></div>
+                <div class="substep">
+                    <img src="images/wheel_of_morality.gif" style="height: 60%; width: 90%; position: relative;  left: 1.5em; top: 0.5em" >
+                </div>
+                <div class="notes">
+                    <p>* Customer Expectations</p>
+                    <p>* Some other data... someone picks something seemingly random</p>
+                    <p>How systems have hystorically done</p>
+                </div>
+            </div>
+
+            <div id="past_perf" class="darkWithStripesSettings step"  data-x="-7200" data-y="6800" data-z="2000">
+                <div class="topCentre redText" style="font-size: 1.7em"><b>Past Performance Doesn't Dictact Future Goals</b></div>
+                <div>
+                    <img src="images/past_results.jpg" style="height: 60%; width: 80%; position: relative;  left: 2em; top: 1.5em" >
+                </div>
+                
+                <div class="notes">
+                  <p>* go back to the idea that your service has multiple dependencies</p>  
+                  <p>* * They might have evolving requirements</p>
+                  <p>* Things rarely stay static for long</p>
+                  <p>* * It can be a useful starting point... maybe, if you have nothing else to go on</p>
+                </div>
+            </div>
+            
+            <div id="back_to_budget" class="slide step " style="background-color:rgb(39, 38, 38)" data-x="-7200" data-y="6800" data-z="4000">
+                <div class="topCentre whiteText"><b>Now Back to the</b></div>
+                <div>
+                    <img src="images/budget-2309565205.jpg" style="height: 60%; width: 80%; position: relative;  left: 3em; top: 1.5em" >
+                </div>
+                
+                <div class="notes">
+                </div>
+            </div>
+
+
+
+            <div id="only_math" class="backgroundSettings step" data-x="-9000" data-y="6800" data-z="2000">
+                <div class="centre whiteText" style="font-size: 2em"><b>Budgeting: More Than Math</b></div>
+
+                
+                <div class="notes">
+                    <p>The primary function of the budget is to define direction</p>
+                    <p>you need to set a plan and stick to it</p>
+                    <p>It requires multiple layers of by in</p>
+                    <p>Enforcement is required to be successful</p>
+                    <p>Ultimately, setting a budget is about enumerating how much risk you can tolerate in order to make improvements</p>
+                </div>
+            </div>
+
+            <div id="risk_tolerance" class="step slide backgroundSettings" data-x="-9000" data-y="8800" data-z="2000">
+                <div class="topCentre redText"><b>How Do You Determine How Much Risk?</b></div>
+                <div>
+                    <img src="images/user_acceptance.jpg" style="height: 60%; width: 80%; position: relative;  left: 3em; top: 1.5em" >
+                </div>
+                
+                <div class="notes">
+                    <p>Remember the users we defined earlier?</p>
+                    <p>We want to make them happy</p>
+                    <p>A User will never comment on a service being too reliable</p>
+                    <p>You can optionally build "get out of jail free" cards into the risk profile</p>
+
+                </div>
+            </div>
+
+            <div id="surplus" class="sunBackgroundSettings step" data-x="-9000" data-y="10800" data-z="2000">
+                <div class="topCentre redText"><b>What To Do With Surplus?</b></div>
+                <div>
+                    <img src="images/budget-surplus.webp" style="height: 60%; width: 80%; position: relative;  left: 3em; top: 1.5em" >
+                </div>
+                
+                <div class="notes">
+                    <p>* you need to think ahead</p>
+                    <p>* Waste of errors to have it go to 'petty cash'</p>
+                    <p>* Improve current services</p>
+                    <p>* Risky experiments... how about injecting latency to see if user happiness drops?</p>
+                    <p>* Investigate new technology</p>
+                    <p>* Pay down tech debt</p>
+                    <p>* successive under budget means you can consider reallocating resources</p>
+                </div>
+            </div>
+
+
+            <div id="over_budget" class="backgroundSettings commonBackgroundSettings step slide" data-x="-9000" data-y="6800" data-z="0">
+                <div class="topCentre redText">
+                    <b>But What If You Fail?</b>
+                </div>
+                <p class="substep bulletFont" style="text-align: left; color:rgb(243, 243, 130)">* Halt changes</p>
+                <p class="substep bulletFont" style="text-align: left; color:rgb(243, 243, 130)">* Use your get-out-of-jail card</p>
+                <p class="substep bulletFont" style="text-align: left; color:rgb(243, 243, 130)">* Beef up instrumentation</p>
+                <p class="substep bulletFont" style="text-align: left; color:rgb(243, 243, 130)">* Slow your release cadence</p>
+                <p class="substep bulletFont" style="text-align: left; color:rgb(243, 243, 130)">* Adjust the SLI/SLOs... maybe they aren't appropriate</p>
+                <p class="substep bulletFont" style="text-align: left; color:rgb(243, 243, 130)">* Take no action and use it as a data point?</p>
+                
+                <div class="notes">
+                    <p>* In mature organizations they put a halt to deployments until the budget recovers</p>
+                    <p>* Earlier we talked about budgeting for a get-out-of-jail free card... you could be forced to use one (or a few) of these to continue </p>
+                    <p>* You could attempt to make non-impacting changes such as improving the alerting/metrics/paging/SOPs to hopefully reduce down time next budget cycle</p>
+                    <p>* You can slow the release cadence to a trickle so that code authors are strongly incentivised to improve the stability of their releases</p>
+                    <p>* If you have multiple budget failures it could be that your metrics are off base. It is an opportunity to review and revise</p>
+                </div>
+            </div> 
+
+            <div id="fault" class="step" data-x="-9000" data-y="6800" data-z="-2000">
+                
+                <div>
+                    <img src="images/not_my_fault.jpg" style="height: 100%; width: 100%; position: relative;  " >
+                </div>
+                
+                <div class="notes">
+                    <p>* There are a lot of things that can cause failure</p>
+                    <p>* Every service in an app's path incurs risk </p>
+                    <p>* If the service is outside of your org's control, you need to decide if this counted against you</p>
+                </div>
+            </div>
+
+            <div id="full_stack" class="darkWithSpotsSettings step" data-x="-9000" data-y="6800" data-z="-4000">
+                <div class="topCentre redText" style="font-size: 1.7em"><b>Allocating For Boundaries</b></div>
+                <div>
+                    <img src="images/gallery-kiali.png" style="height: 89%; width: 70%; position: relative; left:3.5em " >
+                </div>
+                
+                <div class="notes">
+                    <p>* If your org controls the services at the boundaries you need to account for this in your error budget</p>
+                    <p>* If you have Kafka, SQL and a down stream API that are all required for your app, they need to be captured in your budget</p>
+                </div>
+            </div>
+
+
+            <div id="budget_boundaries" class="darkWithSpotsSettings step" data-x="-9000" data-y="9800" data-z="-4000">
+                <div class="topCentre redText" style="font-size: 1.7em"><b>Example Allocation</b></div>
+                <div>
+                    <img src="images/budget_boundaries.png" style="height: 15%; width: 95%; position: relative; left:0.5em; top: 4em" >
+                </div>
+                
+                <div class="notes">
+                    
+                </div>
+            </div>
+
+            <div id="time_consuming" class="step" data-x="-8700" data-y="6800" data-z="-6000">
+                <div>
+                    <img src="images/success_and_effort.jpg" style="height: 140%; width: 110%; position: relative;  " >
+                </div>
+                
+                <div class="notes">
+                </div>
+            </div>
+
+
+            <div id="expensive" class="step" data-x="-2000" data-y="6800" data-z="-7000">
+                <div class="topCentre redText"><b>It's Expensive...</b></div>
+
+                
+                <div class="notes">
+                    <p>* This process is technically complex</p>
+                    <p>* Can be hard to get stake holders on board</p>
+                    <p>* * People sometimes have a hard time seeing the value in this process</p>
+                </div>
+            </div>
+
+            <div id="trial_and_error" class="darkWithStripesSettings step" data-x="-7000" data-y="15800" data-z="-8000">
+                <div class="topCentre whiteText"><b>Trial and Error...</b></div>
+                <div>
+                    <img src="images/epic_fail.gif" style="height: 80%; width: 100%; position: relative;  " >
+                </div>
+                
+                <div class="notes">
+                    <p>* be prepared to have things blow up on you</p>
+                    <p>* you need to set check points where you revisit things</p>
+                    <p>* You will get things wrong... especially at first</p>
+                </div>
+            </div>
+
+            <div id="benefits" class="step slide darkWithStripesSettings" data-x="-7000" data-y="6800" data-z="-10000">
+                <div class="centre redText"><b>Lots of Benefits</b></div>
+
+                <div class="notes">
+                    <p>* Common language</p>
+                    <p>* Common understanding and purpose</p>
+                    <p>* Requires buy-in so everyone is invested</p>
+                    <p>* It is measurable</p>
+                    <p>* Provides a baseline allowing for improvement</p>
+                    <p>* Business objectives may change as understanding of flow is gained (there are more than my component that can cause us errors)</p>
+                </div>
+            </div>
+
+            <div id="not_magic" class="darkWithStripesSettings step" data-x="-8000" data-y="6800" data-z="-11000" data-rotate-z="90">
+                <div class="topCentre redText"><b>It's Not Magic...</b></div>
+                <div>
+                    <img src="images/magic_kit.jpg" style="height: 60%; width: 90%; position: relative; left: 1.5em; top:1em " >
+                </div>
+                
+                <div class="notes">
+                    <p>* You are required to put in the effort</p>
+                    <p>* You NEED organizational buy-in</p>
+                    <p>* No one can skirt the rules</p>
+                    <p>* Requires specific skill sets</p>
+                    <p>* It's a different way of thinking</p>
+                </div>
+            </div>
+
+            <div id="pizza_recap" class="slide step backgroundSettings" data-x="-1000" data-y="3800" data-z="-5000" data-rotate-z="0">
+                <div class="topCentre whiteText"><b>Let's Finish Our Example...</b></div>
+
+                <div>
+                    <img src="images/pizza_van.png" style="height: 80%; width: 80%; position: relative; left: 2em; top:1.5em " >
+                </div>
+                <div class="notes">
+                    <p>* Recall that we are trying to make deliveries in less than 60 minutes as measured by the GPS</p>
+                    <p>* 95% of deliveries in a shift must be successful</p>
+                    <p>* We are going to track our SLO's over a 1 month period of time</p>
+                    <p>* So (# successful shifts in a month/total # of shifts in a month) * 100 needs to be greater than 98% as was written in our SLO statement </p>
+                    <p>* We have lots of boundaries we don't control but customers will expect use to account for</p>
+                    <p>* * Traffic</p>
+                    <p>* * Construction</p>
+                    <p>* * Snow</p>
+                    <p>* * Trains</p>
+                </div>
+            </div>
+
+            <div id="pizza_budget" class="darkWithSpotsSettings step" data-x="-1000" data-y="2600" data-z="-5000" data-rotate-z="0">
+                <div class="topCentre redText"><b>How To Improve...</b></div>
+                <div>
+                    <img src="images/improvements.jpg" style="height: 70%; width: 80%; position: relative; left: 2em; top:1.5em " >
+                </div>
+                
+                <div class="notes">
+                    <p>* Improve the website</p>
+                    <p>* Load balancing slower but further away locations</p>
+                    <p>* Queuing pizzas longer it one larger location but driving less time</p>
+                    <p>* Testing out a pizza truck in the highest traffic areas</p>
+                </div>
+            </div>
+
+            <div id="finished" class=" step" data-x="-2000" data-y="1300" data-z="-5000" data-rotate-z="0">
+                <div>
+                    <img src="images/finished.png" style="height: 70%; width: 80%; position: relative; " >
+                </div>
+                <div class="notes">
+                    <p>Hopefully we have enough information to try it for real!</p>
+                </div>
+            </div>
+
+           
+
+            <!-- These load the actual JS. In this case a relative path to a js folder-->
+            <script src="js/impress.js"></script>
+            <script src="js/highlight.pack.js"></script>
+             <!-- <script src="js/substeps2.js"></script>-->
+            <script>impress().init();</script>
+            <script>hljs.initHighlightingOnLoad();</script>
+    
+        </div>
+    </body
+></html>

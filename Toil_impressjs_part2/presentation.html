@@ -1,0 +1,308 @@
+<html lang="en">
+    <!-- 
+        Throughout this slide deck you will see a lot of empty div's. This is because I am using custom css grids with the following spacing:
+        1fr 10fr 1fr
+        This is to help deal with different screen/projector resolutions. It makes the code look slightly messy but I always want the main elements 
+        in the middle div so that it displays correctly. This is my first attempt at html/css in over 10 years. I am sure there are a lot of things 
+        that could be improved upon
+    -->
+    <head>
+        <title>Dealing With TOIL</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=1024">
+        <meta name="author" content="Steve Ovens">
+        <!-- I am using the css available from the impress.js github-->
+        <link href="css/impress-demo.css" rel="stylesheet">
+        <link href="css/classic-slides.css" rel="stylesheet">
+        <link href="css/mermaid.forest.css" rel="stylesheet">
+        <link href="css/github.css" rel="stylesheet">
+        <!-- These are my local css styles -->
+        <link href="css/local_custom.css" rel="stylesheet">
+    </head>
+    <!-- This is required for impress.js to work properly-->
+    <body class="impress-not-supported" style="background-color: rgb(73, 72, 72);">
+        <!-- Set a fall back message. I am using the one from the demo because... why not?-->
+        <div class="fallback-message">
+            <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+            <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+        </div>
+
+        <div id="impress" style="perspective: 1000px;">
+            
+            <div id="eliminate_toil" class="darkWithSpotsSettings step slide" data-x="0" data-y="0" data-z="0">
+                <div class="topCentre whiteText"><b>Eliminating Toil</b></div>
+                <div>
+                    <img src="images/ToxixToil.png" style="height: 80%; width: 80%; position: relative; left: 3em; top: 1em" >                
+                </div>
+                <div class="notes">
+                    <p>Eliminating toil is a misnomer</p>
+                    <p>It's an impossible task</p>
+                    <p>Has a habit of creating a "death spiral"</p>
+                    <p>Regardless of how much you automate, how clean your processes are or how pristine your runbooks are, toil will always exist</p>
+                </div>
+            </div>
+
+            
+            <div id="50_50" class="step slide darkWithStripesSettings" data-x="-7200" data-y="6800" data-z="4000">
+                <div class="topCentre whiteText"><b>Reduce Not Eliminate</b></div>
+                <div>
+                    <img src="images/50-50.jpg" style="height: 80%; width: 100%; position: relative; " >                
+                </div>
+                <div class="notes">
+                    <p>Updating automations, squashing bugs, fielding tickets, creating or updating runbooks/documentation and similar activities will never completely disappear</p>
+                    <p>You can't ever eliminate toil, but you can reduce it to healthy levels</p>
+                    <p>If your toil goes above a certain threshold (say 65%) toil piles up</p>
+                    <p>Bigger orgs try for 33% toil... but 50% may be more manageable</p>
+                </div>
+            </div>
+
+            <div id="automate_everything" class="slide step rippleBackgroundSettings"  data-x="-7200" data-y="5000" data-z="4000">
+                <div>
+                    <div class="topCentre whiteText"><b>Automate All The Things!</b></div>
+                </div>
+                <div>
+                    <img src="images/automation.gif" style="height: 70%; width: 100%; position: relative; top: 3em " >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Automation is the primary way of reducing toil</p>
+                    <p>Mantra: "if it can be automated, it should be"</p>
+                    <p>There are two types of automation: Deployment automation and systems automation.                    </p>
+                </div>
+            </div>
+            
+            <div id="jenkins" class="slide step squaresBackgroundSettings"  data-x="-7200" data-y="3000" data-z="4000">
+                <div>
+                    <div class="topCentre whiteText"><b>Continuous Delivery</b></div>
+                </div>
+                <div>
+                    <img src="images/jenkins.png" style="height: 90%; width: 90%; position: relative;  left: 1em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Deployment automation is the "CD" part of CI/CD</p>
+                    <p>examples tools Jenkins, ArgoCD and others</p>
+                    <p>Pipelines must be reliable, well documented and well maintained</p>
+
+                </div>
+            </div>
+
+            <div id="scripting" class="slide step purpleBackgroundSettings" data-x="0" data-y="1200" data-z="100">
+                <div>
+                    <div class="topCentre whiteText"><b>Scripting Is Only Part Of The Battle</b></div>
+                </div>
+                <div>
+                    <img src="images/python_scripting.png" style="height: 70%; width: 100%; position: relative;  top: 2em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Scripting is a step in the right direction</p>
+                    <p>Might have to do fail overs, patching or other complicated tasks</p>
+                    <p>Having to launch a script is still a form of toil</p>
+                    <p>Maintaining code is also toil, as is Maintaining the documentation/comments</p>
+                    <p>Toil cannot be completely eliminated</p>
+                </div>
+            </div>
+
+
+            <div id="say_no" class="slide step sunBackgroundSettings" data-x="2500" data-y="3600" data-z="600">
+                <div>
+                    <div class="topCentre redText"><b>Learning To Say No</b></div>
+                </div>
+                <div>
+                    <img src="images/protecting_resources.jpg" style="height: 80%; width: 100%; position: relative;   top: 2em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Technical debt is a problem ... but there are easier wins</p>
+                    <p>Identifying the human side of toil can go a long way to freeing up people</p>
+                    <p>excessive tickets, "pager" events, or walkups which constantly disrupt workflow </p>
+                    <p>This type of toil is really really hard to track</p>
+                    <p>Have one or two people dedicated to handling interrupts or OnCall activities</p>
+                    <p>tickets, meetings, walkups etc</p>
+                </div>
+            </div>
+
+            <div id="story" class="slide step darkWithSpotsSettings" data-x="0" data-y="2200" data-z="100">
+                <div>
+                    <img src="images/phoenix_project.png" style="height: 70%; width: 100%; position: relative;  top: 4em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Phoenix project is about a company looking to modernize and launch a new platform</p>
+                    <p>They have all kinds of legacy problems to overcome</p>
+                </div>
+            </div>
+            <div id="brent" class="slide step squaresBackgroundSettings" data-x="0" data-y="4200" data-z="100">
+                <div>
+                    <img src="images/brent_phoenix.jpg" style="height: 70%; width: 100%; position: relative;  top: 4em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Brent is a star employee... maybe even a hero</p>
+                    <p>He is well meaning and cares about his work</p>
+                    <p>He ends up getting involved in all the things because of his skill and knowledge</p>
+                    <p>Even though there are other team members, Brent is called in to solve tough problems</p>
+                    <p>Both inside and outside his department regardless of his assigned tasks</p>
+                </div>
+            </div>
+            <div id="bill" class="slide step darkWithStripesSettings" data-x="0" data-y="4200" data-z="1500">
+                <div>
+                    <img src="images/bill_phoenix.jpg" style="height: 100%; width: 50%; position: relative;  left: 1em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Bill, the manager, has been tasked with guiding their business-critical initiative</p>
+                    <p>Its a massive company impacting project</p>
+                    <p>Bill finds out how critical Brent is to the entire org</p>
+                </div>
+            </div>
+            <div id="protect" class="slide step purpleBackgroundSettings" data-x="1500" data-y="4200" data-z="100">
+                <div>
+                    <div class="topCentre whiteText"><b>Protect Your Resources!</b></div>
+                </div>
+                <div>
+                    <img src="images/protect_the_resources.png" style="height: 80%; width: 100%; position: relative; top: 1em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>One of the best things Bill does is put up a wall between the outside and Brent</p>
+                    <p>Brent is happy because he has a lot less pressure and contact switching</p>
+                    <p>Things start to get better because Toil and context switching penalties are quickly reduced</p>
+                </div>
+            </div>
+            <div id="prevent_problems" class="slide step sunBackgroundSettings" data-x="3000" data-y="4200" data-z="100" data-rotate-x="180" data-rotate-y="00" data-rotate-z="300" data-rotate-order="xyz">
+                <div>
+                    <div class="centre redText"><b>Take Preventative Measures</b></div>
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>One of the best ways to prevent toil is to avoid it in the first place</p>
+                </div>
+            </div>
+            <div id="avoid_problems" class="step" data-x="4000" data-y="5900" data-z="100" data-rotate-x="180" data-rotate-y="00" data-rotate-z="300" data-rotate-order="xyz">
+                <div>
+                    <img src="images/avoid_mistakes.jpg" style="height: 100%; width: 100%; position: relative; " >
+                </div>
+                <div class="notes">
+                    <p>There is an example of logs filling up a disk</p>
+                    <p>instead of cleaning the logs it is better identify the problem</p>
+                    <p>After finding the problem submit a patch so the problem goes away</p>
+                    <p>Automation can and WILL mask problems</p>
+                    <p>it can cause other department to push toil onto your group since your group is always finding workarounds for "grunge" work</p>
+                </div>
+            </div>
+            <div id="calc_toil" class="slide step darkWithSpotsSettings" data-x="4000" data-y="5900" data-z="100" data-rotate-x="90" data-rotate-y="90" data-rotate-z="300" data-rotate-order="xyz">
+                <div>
+                    <div class="topCentre whiteText"><b>Self Service & Proper Access</b></div>
+                </div>
+                <div>
+                    <img src="images/self_service.jpg" style="height: 85%; width: 100%; position: relative;  top: 1em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Another good way to reduce toil is providing proper access</p>
+                    <p>Self service options can take time to develop but increase satisfaction and accountability in the long run</p>
+                    <p>Most people prefer not having to go through a 3rd party for access</p>
+                </div>
+            </div>
+            <div id="toil_isnt_bad" class="slide step rippleBackgroundSettings" data-x="4000" data-y="6900" data-z="700" data-rotate-x="90" data-rotate-y="90" data-rotate-z="300" data-rotate-order="xyz">
+                <div>
+                    <div class="topCentre whiteText"><b>Toil Isn't All Bad!</b></div>
+                </div>
+                <div>
+                    <img src="images/success_and_failure.jpg" style="height: 80%; width: 100%; position: relative;  top: 2em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Automation can go wrong... especially if there is too much trust in it</p>
+                    <p>Companies will end upo being reliant on persons unfamiliar with the architecture</p>
+                    <p>it often leads to companies thinking they can hire level 1 (L1) resources that are either off shore or otherwise disconnected from the environment itself</p>
+
+                </div>
+            </div>
+            <div id="how_it_works" class=" step " data-x="4000" data-y="1000" data-z="1100" data-rotate-x="90" data-rotate-y="90" data-rotate-z="300" data-rotate-order="xyz">
+                <div>
+                    <img src="images/how_system_works.gif" style="height: 90%; width: 100%; position: relative;" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>When you have a complex system, toil helps you stay current</p>
+                    <p>If the automation breaks, toil helps maintain knowledge required to fix automation</p>
+                </div>
+            </div>
+            <div id="pitfal" class="step slide darkWithStripesSettings" data-x="4000" data-y="2000" data-z="2100" data-rotate-x="90" data-rotate-y="90" data-rotate-z="300" data-rotate-order="xyz">
+                <div>
+                    <div class="topCentre whiteText"><b>Avoid Automation Pitfalls!</b></div>
+                </div>
+                <div>
+                    <img src="images/pitfalls_1.png" style="height: 80%; width: 100%; position: relative; top: 1em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Skills and knowledge rust</p>
+                    <p>Persons who are responsible for building automation may move on</p>
+                    <p>Documentation and practice with the automation is forgotten and/or out dated</p>
+                    <p>Automations can only react to known situations, often in flawed ways</p>
+                </div>
+            </div>
+            <div id="dont_get_clever" class="step slide sunBackgroundSettings" data-x="3000" data-y="3000" data-z="3100" data-rotate-x="90" data-rotate-y="90" data-rotate-z="300" data-rotate-order="xyz">
+                <div>
+                    <div class="topCentre whiteText"><b>Try To Avoid Cleverness</b></div>
+                </div>
+                <div>
+                    <img src="images/cdrom_drink.gif" style="height: 80%; width: 100%; position: relative; top: 1em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>The more clever the automation, the more apt for failure</p>
+                    <p>Especially early on, try to aim for MVP and avoid being clever</p>
+                </div>
+            </div>
+            <div id="caution" class="step slide darkWithSpotsSettings" data-x="4000" data-y="2000" data-z="2100" data-rotate-x="90" data-rotate-y="0" data-rotate-z="300" data-rotate-order="xyz">
+                <div>
+                    <img src="images/case1_knight_capital.png" style="height: 40%; width: 100%; position: relative; top: 1em" >
+                </div>
+                <div>
+                    <img src="images/case2_digital_darkness.png" style="height: 40%; width: 100%; position: relative; top: 3em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Case 1 involved the company (Knight Capitl Group in 2012) dealing with an automation glitch. This huge company was responsible for nearly 11% of all trading in American stocks. The problem came when they had to sell the positions they accidently bought, for a loss of $440m. They lost $10 million/minute </p>
+                    <p>Case 2 is sadly not that uncommon as Amazon, Microsoft and Google have all suffered major outtages in their cloud platform over the last few years</p>
+                </div>
+            </div>
+            <div id="what_can_be_done" class="step slide purpleBackgroundSettings" data-x="4000" data-y="1000" data-z="2100" data-rotate-x="90" data-rotate-y="0" data-rotate-z="300" data-rotate-order="xyz">
+                <div>
+                    <div class="topCentre whiteText"><b>Mitigation Techniques</b></div>
+                </div>
+                <div>
+                    <img src="images/prevention_dominos.jpg" style="height: 80%; width: 100%; position: relative; top: 1em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Have an environment where there is limited or no automation </p>
+                    <p>You could also disable or avoid using automation for short periods during a shift or during a rotation</p>
+                    <p>Slow down the rate of testing in a lesser environment to allow for all parties to build on practical knowledge</p>
+                    <p>Go through audits of the automation system to see if there is a way to simplify them</p>
+                </div>
+            </div>
+            <div id="finish" class="step slide darkWithStripesSettings" data-x="-5000" data-y="1000" data-z="2100" data-rotate-x="90" data-rotate-y="0" data-rotate-z="300" data-rotate-order="xyz">
+                <div>
+                    <div class="topCentre whiteText"><b>We're Done With Toil</b></div>
+                </div>
+                <div>
+                    <img src="images/finish_line.jpg" style="height: 80%; width: 100%; position: relative; top: 1em" >
+                </div>
+                <div></div>
+            </div>
+            
+            <!-- These load the actual JS. In this case a relative path to a js folder-->
+            <script src="js/impress.js"></script>
+            <script src="js/highlight.pack.js"></script>
+            <script>impress().init();</script>
+            <script>hljs.initHighlightingOnLoad();</script>
+    
+        </div>
+    </body
+></html>

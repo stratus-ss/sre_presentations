@@ -1,0 +1,216 @@
+<html lang="en">
+    <!-- 
+        Throughout this slide deck you will see a lot of empty div's. This is because I am using custom css grids with the following spacing:
+        1fr 10fr 1fr
+        This is to help deal with different screen/projector resolutions. It makes the code look slightly messy but I always want the main elements 
+        in the middle div so that it displays correctly. This is my first attempt at html/css in over 10 years. I am sure there are a lot of things 
+        that could be improved upon
+    -->
+    <head>
+        <title>Organizational Readiness</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=1024">
+        <meta name="author" content="Steve Ovens">
+        <!-- I am using the css available from the impress.js github-->
+        <link href="css/impress-demo.css" rel="stylesheet">
+        <link href="css/classic-slides.css" rel="stylesheet">
+        <link href="css/mermaid.forest.css" rel="stylesheet">
+        <link href="css/github.css" rel="stylesheet">
+        <!-- These are my local css styles -->
+        <link href="css/local_custom.css" rel="stylesheet">
+    </head>
+    <!-- This is required for impress.js to work properly-->
+    <body class="impress-not-supported" style="background-color: darkgray;">
+        <!-- Set a fall back message. I am using the one from the demo because... why not?-->
+        <div class="fallback-message">
+            <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+            <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+        </div>
+
+        <div id="impress" style="perspective: 1000px;">
+            
+            <div id="sre_ready" class="backgroundSettings step slide" data-x="0" data-y="0" data-z="0">
+                <div class="topCentre whiteText"><b>SRE....</b></div>
+                <div>
+                    <img src="images/are_you_ready.png" style="height: 80%; width: 100%; position: relative; top: 1em" >                
+                </div>
+                <div class="notes">
+                    <p>Just because someone read something on LinkedIn doesn't mean you are ready</p>
+                    <p>Worse yet, if you aren't ready it, the SRE "transformation" can cause a lot of unnecessary churn</p>
+                </div>
+            </div>
+
+            
+            <div id="journey_quote" class="step" data-x="2200" data-y="-2800" data-z="-1000" data-rotate-x="270" data-rotate-y="00" data-rotate-z="300" data-rotate-order="xyz">
+                <div>
+                    <img src="images/impossible_image.jpg" style="height: 100%; width: 120%; position: relative; right: 2em" >                
+                </div>
+                <div class="notes">
+                    <p>SRE can indeed be "magical" if done properly</p>
+                    <p>It can drastically increase technological readiness and "time to market"</p>
+                    <p>It might even enable you to set binding SLAs in place</p>
+                </div>
+            </div>
+
+            <div id="infinity" class="step"  data-x="-1200" data-y="2500" data-z="2000">
+                <div>
+                    <img src="images/infinity_guantlet.jpg" style="height: 100%; width: 80%; position: relative; left: 1em" >
+                </div>
+                <div class="notes">
+                    <p>It can sometimes feel like leadership is always looking at the new shiny toys and their new shiny terms.</p>
+                    <p> Buying into every new hype cycle leads an organization nowhere in a hurry. </p>
+                    <p>it's great at the beginning but...</p>
+                    <p>if you don’t focus on a small amount of change at once, you will burn out your teams.</p>
+                </div>
+            </div>
+            
+            <div id="not_ready" class="slide step rippleBackgroundSettings"  data-x="-9600" data-y="5000" data-z="4000" >
+                <div class="topCentre whiteText"><b>It's OK!</b></div>
+                <div>
+                    <img src="images/not_ready.jpg" style="height: 70%; width: 100%; position: relative; top: 2em;" >
+                </div>
+                <div class="notes">
+                    <p>This is a rather large change from how traditional enterprises have done this in the past.</p>
+                </div>
+            </div>
+
+            <div id="foundation" class="slide step rippleBackgroundSettings"  data-x="-8200" data-y="5000" data-z="4000">
+                <div class="topCentre whiteText"><b>Starting Off Right</b></div>
+                <div>
+                    <img src="images/solid_foundation.jpg" style="height: 70%; width: 100%; position: relative; top: 2em; " >
+                </div>
+                <div class="notes">
+                    <p>It’s important to determine whether there are foundations in place to build from. </p>
+                    <p>doing some discovery before proceeding is necessary in order to set the customer up for future success</p>
+                    <p>Cannot lay a path on completely uneven terrain</p>
+                </div>
+            </div>
+
+            <div id="sum_greater" class="slide step "  data-x="-8200" data-y="8000" data-z="4000" data-rotate-x="180" data-rotate-y="00" data-rotate-z="300" data-rotate-order="xyz">
+                <div>
+                    <img src="images/sum_greater_than_parts.jpg" style="height: 100%; width: 100%; position: relative; " >
+                </div>
+                <div class="notes">
+                    <p>Aim for Site Reliability Engineering not to have Site Reliability Engineers!</p>
+                
+                </div>
+            </div>
+
+
+            <div id="just_enough" class="slide step sunBackgroundSettings"  data-x="-7200" data-y="3000" data-z="4000">
+                <div>
+                    <div class="topCentre redText"><b>"Just Enough" SRE: Requirements</b></div>
+                </div>
+                <ul class="bulletFont whiteText" style="list-style-type: disc; position: relative;top: 2em">
+                    <li class="substep">Focus on delivering application stability</li>
+                    <li class="substep">Error budget/observability</li>
+                    <li class="substep">Incident management/learning from incidents</li>
+                    <li class="substep">Blameless Post Mortems  </li>
+                    <li class="substep">Ability to push back/deny deployment</li>
+                    <li class="substep">Communication / Collaboration between teams</li>
+                </ul>
+                <div class="notes">
+                    <p>Focus</p>
+                    <p>Error Budget</p>
+                    <p>Incident management</p>
+                    <p>Post Mortem</p>
+                    <p>Push back</p>
+                    <p>Communication</p>
+                </div>
+            </div>
+
+            <div id="nice_to_have" class="slide step purpleBackgroundSettings" data-x="-1000" data-y="-1200" data-z="1000">
+                <div>
+                    <div class="topCentre redText"><b>"Just Enough" SRE: Nice To Haves</b></div>
+                </div>
+                <div></div>
+                <ul class="bulletFont whiteText" style="list-style-type: disc; position: relative;top: 2em">
+                    <li class="substep">Chaos Testing</li>
+                    <li class="substep">Capacity Planning</li>
+                    <li class="substep">Problem Management Database</li>
+                    <li class="substep">Ability to contribute application fixes</li>
+                    <li class="substep">"Keys to the Kingdom"</li>
+                    <li class="substep">Organizational agility to be able to refuse on call for an application</li>
+                </ul>
+                <div class="notes">
+                    <p>chaos</p>
+                    <p>capacity</p>
+                    <p>problem management</p>
+                    <p> can fix application</p>
+                    <p>all the keys</p>
+                    <p>org agility</p>
+                </div>
+            </div>
+
+
+            <div id="sre_book" class="step slide" data-x="2500" data-y="3600" data-z="600">
+                <div>
+                    <img src="images/google-sre.jpg" style="height: 100%; width: 70%; position: relative; left: 3em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>The SRE book is the best and worst thing to happen to SRE</p>
+                    <p>Can lead to leadership to toss the book at a group and say "just do this"</p>
+                    <p>Make sure you know where you are going. Set a goal and head for it</p>
+                </div>
+            </div>
+            <div id="buy_in" class=" step " data-x="3000" data-y="1200" data-z="1100">
+                <div>
+                    <img src="images/buy-in.jpg" style="height: 100%; width: 100%; position: relative;" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>You need to have buy-in from all levels.</p>
+                    <p>If you have serious detractors the initiative is doomed to fail</p>
+                </div>
+            </div>
+            <div id="top_down" class=" step " data-x="0" data-y="4200" data-z="100">
+                <div>
+                    <img src="images/TopDownManagement.png" style="height: 100%; width: 100%; position: relative;" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>SRE doesn't thrive when handed top-down</p>
+                </div>
+            </div>
+            <div id="trust" class="slide step backgroundSettings " data-x="500" data-y="800" data-z="1100" data-rotate-x="180" data-rotate-y="00" data-rotate-z="300" data-rotate-order="xyz">
+                <div>
+                    <div class="topCentre whiteText"><b>Trust And Safety</b></div>
+                </div>
+                <div>
+                    <img src="images/trust.jpg" style="height: 90%; width: 90%; position: relative; left: 2em" >
+                </div>
+                <div class="notes">
+                    <p>Sometimes your initial job as a consultant is to play therapist.</p>
+                    <p>Some teams may not want to work with or trust each other</p>
+                    <p>Work towards a common goal can build trust and a sense of moving forward</p>
+                </div>
+            </div>
+
+            <div id="collab" class="slide step backgroundSettings " data-x="500" data-y="800" data-z="1100" data-rotate-x="90" data-rotate-y="90" data-rotate-z="90" data-rotate-order="xyz">
+                <div>
+                    <div class="topCentre whiteText"><b>Collaboration</b></div>
+                </div>
+                <div>
+                    <img src="images/collaboration.jpg" style="height: 90%; width: 90%; position: relative; left: 2em" >
+                </div>
+                <div class="notes">
+                    <p>Need to break down the silos</p>
+                    <p>A huge benefit from the SRE model is communication</p>
+                    <p>Collaboration is key to breaking down walls</p>
+                    <p>SRE cannot exist in a bubble</p>
+                </div>
+            </div>
+            <div id="thats_all" class="step " data-x="1500" data-y="2200" data-z="-6100">
+                <div>
+                    <img src="images/thats_all.gif" style="height: 90%; width: 90%; position: relative; left: 2em" >
+                </div>
+            </div>
+            <!-- These load the actual JS. In this case a relative path to a js folder-->
+            <script src="js/impress.js"></script>
+            <script src="js/highlight.pack.js"></script>
+            <script>impress().init();</script>
+            <script>hljs.initHighlightingOnLoad();</script>
+        </div>
+    </body
+></html>

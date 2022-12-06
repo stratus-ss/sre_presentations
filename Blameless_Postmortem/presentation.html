@@ -1,0 +1,811 @@
+<html lang="en">
+    <!-- 
+        Throughout this slide deck you will see a lot of empty div's. This is because I am using custom css grids with the following spacing:
+        1fr 10fr 1fr
+        This is to help deal with different screen/projector resolutions. It makes the code look slightly messy but I always want the main elements 
+        in the middle div so that it displays correctly. This is my first attempt at html/css in over 10 years. I am sure there are a lot of things 
+        that could be improved upon
+    -->
+    <head>
+        <title>Post Mortems</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=1024">
+        <meta name="author" content="Steve Ovens">
+        <!-- I am using the css available from the impress.js github-->
+        <link href="css/impress-demo.css" rel="stylesheet">
+        <link href="css/classic-slides.css" rel="stylesheet">
+        <link href="css/mermaid.forest.css" rel="stylesheet">
+        <link href="css/github.css" rel="stylesheet">
+
+        <!-- These are my local css styles -->
+        <link href="css/local_custom.css" rel="stylesheet">
+        
+    </head>
+    <!-- This is required for impress.js to work properly-->
+    <body class="impress-not-supported" style="background-color: rgb(44, 44, 44);">
+        <!-- Set a fall back message. I am using the one from the demo because... why not?-->
+        <div class="fallback-message">
+            <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+            <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+        </div>
+
+        <div id="impress" style="perspective: 1000px;">
+            <!-- The Intro slide should show first-->
+            <div id="intro" class="backgroundSettings step slide" data-x="-15000" data-y="5000" data-rotate="150">
+                <h1 style="text-align: center;" data-mce-style="text-align: center;">&nbsp;<br></h1><h1 style="text-align: center;" data-mce-style="text-align: center;">&nbsp;<br></h1><h1 style="text-align: center;" data-mce-style="text-align: center;">
+                    <span style="font-size: 48pt; color: white; position: relative; top: 2em" data-mce-style="font-size: 48pt;">Post Mortems: 
+                        A Guide to 
+                        <br/>
+                        <span style="color: rgb(153, 51, 0);" data-mce-style="color: #993300;">Error </span> 
+                        
+                        <span style="color:darkblue;"> Prevention</span>
+                        
+                    </span><br>
+                </h1>
+                <div class="notes">
+                    <p>* want to talk about creating a culture for problem prevention</p>
+                    <p>* we will explore why this is difficult for most customers</p>
+                </div>
+            </div>
+            
+            <div id="what_went_wrong" class="purpleGreenBackgroundSettings step slide" data-x="0" data-y="0" data-z="0">
+                <div class="topCentre redText" style="position: relative; top: 0.3em"><b>What Went Wrong?</b></div>
+                <div>
+                    <img src="images/what-went-wrong.jpg" style="height: 70%; width: 80%; position: relative; left: 4em; top: 3em">
+                </div>
+                    
+                
+                <div class="notes">
+                    <p>* most companies are attempting to answer: what went wrong</p>
+                    <p>* talk about an incident: an app had service interuption during an upgrade</p>
+                    <p>* ignoring the fact this is the wrong question</p>
+                </div>
+            </div>
+
+            <div id="how_can_we_prevent" class="darkWavesBackgroundSettings step slide" data-x="0" data-y="1100" data-z="0">
+                <div>
+                    <img src="images/wrongquestion.jpg" style="height: 70%; width: 80%; position: relative; left: 4em; top: 4em">
+                </div>
+                <div class="notes">
+                    <p>* we are really wanting to know: How can we stop this from happening again?</p>
+                    <p>* its very important to ask the right question</p>
+                </div>
+            </div>
+
+            <div id="wrong_focus" class=" step" data-x="0" data-y="900" data-z="-4000">
+                <div></div>
+                <div>
+                    <img src="images/wrong_focus.jpg" style="height: 100%; width: 100%; position: relative;  right: 1em" >
+                </div>
+                <div class="notes">
+                    <p>* Having the wrong focus means drawing the wrong conclusions</p>
+                    <p>* if you aren't pointed in the right direction, you will end up at the wrong destination</p>
+                </div>
+            </div>
+
+            <div id="terms_to_remember" class="darkWithStripesSettings slide step" data-x="0" data-y="-150" data-z="-4000">
+                <div class="topCentre redText" style="position: relative; top: 0.3em"><b>Important Terms...</b></div>
+                <div>
+                    <p class="substep " style="font-size: 2.05em; text-align: left; position: relative; top: 0.6em; color:tan"> Root Cause</p>
+                    <p class="substep " style="font-size: 2.05em; text-align: left; position: relative; top: 0.6em; color:darkorange"> Mechanistic Reasoning</p>
+                    <p class="substep " style="font-size: 2.05em; text-align: left; position: relative; top: 0.6em; color:tan"> Backwards Accountability</p>
+                    <p class="substep " style="font-size: 2.05em; text-align: left; position: relative; top: 0.6em; color:darkorange"> Counter-Factual</p>
+                    <p class="substep " style="font-size: 2.05em; text-align: left; position: relative; top: 0.6em; color:tan"> Failure</p>
+                </div>
+                <div class="notes">
+                    <p>* Root cause (change this to trigger)</p>
+                    <p>* Mechanistic Reasoning (belief that computers and automation are always the answer)</p>
+                    <p>* Backwards accountability (as in backwards looking and contrasted with forward or future accountability)</p>
+                    <p>* Counter-factual (any idea that hypothesizes what might have been)</p>
+                    <p>* Failure (implies a knowledge of outcomes)</p>
+                </div>
+            </div>
+
+            <div id="what_weve_done" class="step" data-x="0" data-y="-150" data-z="-8000">
+                <div></div>
+                <div>
+                    <img src="images/Albert-Einstein-always_done.jpg" style="height: 90%; width: 100%; position: relative;  right: 1em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>* almost all industries have done some sort of post-incident analysis</p>
+                    <p>* the problem is that, despite best efforts, the same mistakes are often made</p>
+                </div>
+            </div>
+
+            <div id="chain_of_events" class="step" data-x="0" data-y="900" data-z="-8000">
+                <div></div>
+                <div>
+                    <img src="images/chain_of_events.jpg" style="height: 100%; width: 100%; position: relative;  right: 1em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>* we talk about a chain of events</p>
+                    <p>* this implies linear progression (at least in part)</p>
+                    <p>* you know the outcome and so you scrutinize all decisions... blame assigned</p>
+                </div>
+            </div>
+
+            <div id="hindsight" class="step" data-x="1900" data-y="900" data-z="-8000">
+                <div></div>
+                <div>
+                    <img src="images/captain-hindsight1.png" style="height: 90%; width: 100%; position: relative;  right: 1em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>* its really hard to look back</p>
+                    <p>* why was this path taken over another?</p>
+                    <p>* having hindsight makes people exaggerate their ability to predict outcomes</p>
+                </div>
+            </div>
+
+            <div id="mechanistic_reasoning" class="purpleGreenBackgroundSettings slide step" data-x="1900" data-y="-150" data-z="-8000">
+                <div class="topCentre redText" style="position: relative; top: 0.3em"><b>Mechanistic Reasoning?</b></div>
+                <div>
+                    <img src="images/google+automated+car+accident.jpg" style="height: 70%; width: 80%; position: relative;  left: 4em; top: 4em" >
+                </div>
+                <div class="notes">
+                    <p>* we fall back on the belief that the system itself is perfect</p>
+                    <p>* if it wasn't for those pesky humans...</p>
+                    <p>* systems are neglected because it "would have worked"</p>
+                    <p>--> Potential call out to automation gone wrong section of Toil talk</p>
+                </div>
+            </div>
+
+            <div id="los_alamos" class="darkWithStripesSettings step slide" data-x="0" data-y="9800" data-z="0" data-scale="3">
+                <div class="topCentre redText" style="position: relative; top: 0.3em">Traditional Approach: Case Study</div>
+                <div>
+                    <img src="images/los_alamos.jpg" style="height: 70%; width: 100%; position: relative; top: 3em;  left: 0.5em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>* The Los Alamos nuclear lab had an embarassing incident</p>
+                    <p>* 2 classified hard drives went missing</p>
+                    <p>* They had data about nuclear weapons</p>
+                    <p>* Investigators vowed to aggressively pursue the serious matter</p>
+                    <p>* "Accountability and discipline" were preached from the mountain tops</p>
+                    <p>* The hard drives were found behind a photocopier </p>
+                    <p>* An area searched multiple times in the past</p>
+                </div>
+            </div>
+
+            <div id="bad_apples" class="step" data-x="-2800" data-y="8800" data-z="0">
+                <div></div>
+                <div>
+                    <img src="images/BAD-APPLE-Logo-Fix.png" style="height: 90%; width: 100%; position: relative;  right: 1em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>* The investigation found a "few bad apples" breached protocols and were negligent</p>
+                    <p>* case closed right?</p>
+                    <p> NOTE: this is a logo for a PUB</p>
+                </div>
+            </div>
+
+            <div id="los_alamos_later" class="step" data-x="-3600" data-y="5800" data-z="0">
+                <div></div>
+                <div>
+                    <img src="images/practical_experience.jpg" style="height: 90%; width: 100%; position: relative;  right: 1em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>* Los Alamos went on to suffer 2 or 3 more lost hard drive incidents in the next couple of years</p>
+                    <p>* When the case was audited by a 3rd party they found interesting info</p>
+                    <p>* Systemic problems caused people to take short cuts</p>
+                    <p>* regulations were onerous</p>
+                    <p>* environmental stresses</p>
+                    <p>* This event was just one of many infractions</p>
+                </div>
+            </div>
+            
+
+            <div id="do_bad_job" class="step" data-x="-5400" data-y="5800" data-z="0">
+                <div></div>
+                <div>
+                    <img src="images/dilbert_idiot.png" style="height: 80%; width: 110%; position: relative;  right: 1em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>THIS IS THE TRANSITION TO HUMAN ERRORS</p>
+                    <p>* Turns out, unlike this guy, most people aren't trying to be incompetent</p>
+                    <p>* People want some level of accountability</p>
+                </div>
+            </div>
+
+            <div id="people_who_know" class="step" data-x="-7200" data-y="6200" data-z="0">
+                <div>
+                    <img src="images/super_hero.png" style="height: 80%; width: 110%; position: relative;  right: 1em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>* Most people want to be recognized for being an expert in their job</p>
+                    <p>* accountability should be perceived as fair</p>
+                    <p>* investigators who know and understand the problem domain should be involved in the incident recap</p>
+                    <p>* overwhelmingly, people do not want this to be done by management who *think* they know</p>
+                </div>
+            </div>
+
+            <div id="want_to_know_why" class="sunBackgroundSettings step slide" data-x="-9000" data-y="6800" data-z="0">
+                <div class="topCentre redText" style="position: relative; top: 0.3em">Dealing With "Human Error"</div>
+
+                <div>
+                    <img src="images/why_am_i_doing_this.jpg" style="height: 70%; width: 80%; position: relative; top: 3em; left: 3.5em " >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>* the right question is not "what" by "why"</p>
+                    <p>* Only by knowing the factors that lead up to the decision can we hope to prevent it from happening again</p>
+                </div>
+            </div>
+
+            <div id="pilot_error" class="darkWavesBackgroundSettings slide step" data-x="-10800" data-y="6600" data-z="0">
+                <div class="topCentre redText" style="position: relative; top: 0.3em"><b>Pilot "Errors"</b></div>
+                <p class="substep " style="font-size: 1.35em; text-align: left; position: relative; top: 2em; left: 6.8em; color:tan"> * Project looked into 650 "pilot errors"</p>
+                <p class="substep " style="font-size: 1.35em; text-align: left; position: relative; top: 1.5em;left: 6.1em; color:darkorange">* Under pressure instincts were used</p>
+                <p class="substep " style="font-size: 1.35em; text-align: left; position: relative; top: 1em;left: 7.1em; color:tan">* Errors because env different from expected </p>
+                <p class="substep " style="font-size: 1.35em; text-align: left; position: relative; top: 0.5em; left: 8.9em;color:darkorange">* Airplane model varied</p>
+                <p class="substep " style="font-size: 1.35em; text-align: left; position: relative; top: 0em;left: 10.2em;  color:tan">* Severity varied</p>
+                <p class="substep " style="font-size: 1.35em; text-align: left; position: relative; top: -0.5em;left: 11.2em;  color:darkorange">* Need more experience</p>
+                <p class="substep " style="font-size: 1.35em; text-align: left; position: relative; top: -1em;left: 11.7em;  color:tan">* No statistical significance</p>
+                <p class="substep " style="font-size: 1.35em; text-align: left; position: relative; top: -1.5em;left: 11.5em;  color:darkorange">* Tooling needs to conform</p>
+                <div class="notes">
+                    <p> * Project looked into 650 "pilot errors"</p>
+                    <p>* Under pressure instincts were used</p>
+                    <p>* Errors because env different from expected </p>
+                    <p>* Airplane model varied</p>
+                    <p>* Severity varied</p>
+                    <p>* Need more experience</p>
+                    <p>* No statistical significance</p>
+                    <p>* Tooling needs to conform</p>
+                </div>
+            </div>
+
+
+            <div id="why_option_chosen" class=" step " data-x="-7200" data-y="7200" data-z="-410" data-rotate-x="90" data-rotate-z="180" data-rotate-order="xyz">
+                <div>
+                    <img src="images/why_decision.jpg" style="height: 90%; width: 110%; position: relative; right: 1em " >
+                </div>
+                <div class="notes">
+                   <p>* need to really think about tooling conforming to users</p>
+                   <p>* Why did you make that decision in light of the environment you were working</p>
+                   <p>* a good investigator asks why an action made sense at the time</p>
+                   <p>* investigations are not performance reviews</p>
+                   <p> * nor are they about discipline</p>
+                   <p> * In fact they aren’t about what someone might have done differently.</p>
+                </div>
+            </div>
+
+            <div id="failure" class=" step " data-x="-5400" data-y="7200" data-z="-410" data-rotate-x="90" data-rotate-z="180" data-rotate-order="xyz">
+                <div>
+                    <img src="images/multiple_paths.jpg" style="height: 90%; width: 110%; position: relative; right: 1em " >
+                </div>
+                <div class="notes">
+                    <p>* remember failure was an important term?</p>
+                    <p>* Failure implies knowledge of outcome</p>
+                    <p>* someone "failed to take action" implies all outcomes to paths are known</p>
+                    <p>* looking back the path is clear, as is the failure</p>
+                </div>
+            </div>
+
+            <div id="backward_accountability" class="step " data-x="-3600" data-y="7200" data-z="-410" data-rotate-x="90" data-rotate-z="180" data-rotate-order="xyz">
+                <div>
+                    <img src="images/backwards_accountability.jpg" style="height: 90%; width: 110%; position: relative; right: 1em " >
+                </div>
+                <div class="notes">
+                   <p>* backwards accountability: another important term</p>
+                   <p>* the act of holding someone accountable for something in the past</p>
+                   <p>* going to jail for something you did is backwards accountability</p>
+                   <p>* This is the wrong approach</p>
+                   <p>* you want to make sure triggers don't happen again</p>
+                   <p>* avoiding the mistake in the future gives a sense of purpose and drive</p>
+                </div>
+            </div>
+
+            <div id="stub_toe" class="backgroundSettings step slide" data-x="-1800" data-y="6800" data-z="-410" data-rotate-x="90" data-rotate-z="180" data-rotate-order="xyz">
+                <div class="topCentre redText">
+                    <b>Stubbing Your Toe Hurts...</b>
+                    <br>
+                </div>
+                <div>
+                    <img src="images/Sidewalk+Threat.jpg" style="height: 90%; width: 90%; position: relative; left: 2em;  " >
+                </div>
+                <div class="notes">
+                    <p>* When you catch your foot on jagged sidewalk do you punish yourself?</p>
+                    <p>* Should you have known better? Maybe...</p>
+                    <p>* But it makes more sense to note the problem and make sure you don't trip again</p>
+                    <p>* You're a lot more careful now aren't you?</p>
+                </div>
+            </div>
+
+            <div id="more_automation" class="darkWithSpotsSettings step slide" data-x="0" data-y="6800" data-z="-410" data-rotate-x="90" data-rotate-z="180" data-rotate-order="xyz">
+                <div class="topCentre redText">More Auotmation!</div>
+                <div>
+                    <img src="images/robotic-automation.jpg" style="height: 90%; width: 90%; position: relative; left: 2em;  " >
+                </div>
+                <div class="notes">
+                    <p>* back to the idea of human errors...</p>
+                    <p>* if it wasn't for that the system would have saved us!</p>
+                    <p>* Could be... computers are very good at doing the same thing over and over... until they aren't</p>
+                </div>
+            </div>
+
+            <div id="added_complexity" class="backgroundSettings step slide" data-x="0" data-y="7612" data-z="-820" data-rotate-y="180" data-rotate-z="0" data-rotate-order="zxy">
+                <div >
+                    <img src="images/Simple-Rubiks-Cube-puzzle.jpg" class="substep" style="height: 90%; width: 90%; position: fixed;   " >
+                    <img src="images/medium_rubiks_cube.jpg" class="substep" style="height: 90%; width: 90%;  position: fixed; " >
+                    <img src="images/medium-hard-rubiks-cube.jpg" class="substep" style="height: 90%; width: 90%;   position: fixed;" >
+                    <img src="images/hard_rubix_cube.jpg" class="substep" style="height: 90%; width: 90%;  position: fixed; " >
+                    <img src="images/complex_rubik_cube.jpg" class="substep" style="height: 90%; width: 90%;  position: fixed; " >
+                    <img src="images/complex_program_cartoon.png" class="substep" style="height: 90%; width: 90%;  position: fixed; " >
+                </div>
+                <div class="notes">
+                    <p>rubik's cubes simple -> medium -> medium hard -> hard -> complex</p>
+                    <p>tracing problem interuption cartoon</p>
+                    <p>* not saying automations are bad</p>
+                    <p>* but they break randomly</p>
+                    <p>* automations built by humans... who make mistakes</p>
+                    <p>* why would we think the person who wrote automation or automation software is infallible but the person who has months or years of experience in your specific environment is inherently more flawed</p>
+                    <p>TAKE A BREAK AT THIS SLIDE</p>
+
+                </div>
+            </div>
+
+
+            <div id="how_decisions_made1" class="darkWithStripesSettings step slide" data-x="-1800" data-y="7612" data-z="-820" data-rotate-y="180" data-rotate-z="0" data-rotate-order="zxy">
+                <div class="topCentre redText">How We <b style="color: rgb(52, 183, 5);">THINK</b> People Make Decisions...  </div>
+                <div>
+                    <img src="images/obvious_paths.png" style="height: 70%; width: 90%; position: relative; left: 2em;  " >
+                </div>
+                <div class="notes">
+                   <p>* we view things as a chain of events</p>
+                   <p>* looking back, of course the network lag caused the database being overloaded which obviously caused the website to respond slower </p>
+                   <p>* we work backwards from an outcome and the risks are obvious</p>
+                </div>
+            </div>
+
+            <div id="fly_ball" class="backgroundSettings step slide" data-x="-3600" data-y="7612" data-z="-820" data-rotate-y="180" data-rotate-z="0" data-rotate-order="zxy">
+                <div class="topCentre redText">How To Catch Fly Ball</div>
+
+                <div class="substep">
+                    <img src="images/fly_ball_math.gif" style="height: 70%; width: 90%; position: relative; left: 2em; top: 1em " >
+                </div>
+                <div class="notes">
+                    <p>* for some reason we have an abnormally high expectation for technical people.</p>
+                    <p>* all outcomes should be known. Of course you could just slow things down and take the right path</p>
+                    <p>* when we apply these same standards to the real world it shows how absurd these expactations can be</p>
+                    <p>* obviously we know all of the variables from the moment the ball is hit</p>
+                    <p>* then all we have to do is plug in the formula</p>
+                </div>
+            </div>
+
+            <div id="trajectory" class="purpleBackgroundSettings step slide" data-x="-5400" data-y="7612" data-z="-820" data-rotate-y="180" data-rotate-z="0" data-rotate-order="zxy">
+                <div class="topCentre redText">Everyone Remembers Trig right...?</div>
+                <div>
+                    <img src="images/calculate_trajectory.png" style="height: 40%; width: 90%; position: relative; left: 2em; top: 4em " >
+                </div>
+                <div class="notes">
+                    <p>* except we have no way to know wind speed</p>
+                    <p>* ... or the spin of the ball</p>
+                    <p>* as the person in the middle of the action can we really know all the vars?</p>
+                </div>
+            </div>
+
+            <div id="actually_make_decisions1" class="backgroundSettings step slide" data-x="-7200" data-y="7612" data-z="-820" data-rotate-y="180" data-rotate-z="0" data-rotate-order="zxy">
+                <div class="topCentre redText">How We Actually Do Things... </div>
+                <div>
+                    <img src="images/over_the_shoulder_catch.gif" class="substep" style="height: 80%; width: 90%; position: relative; left: 2em; top: 2em " >
+                </div>
+                
+                <div class="notes">
+                   <p>* The most success players ignore everything</p>
+                   <p>* judge their distance according to perceived angle of the ball</p>
+                   <p>* the point? what seems like the obvious decision path in hindsight is far from reality</p>
+                   <p>* When you judge a fluid situation as if you know all the variables, you have to assume certainties where they may not exist and thus it leads to a flawed remediation.
+                </p>
+                </div>
+            </div>
+
+            <div id="two_initial_steps" class="rippleBackgroundSettings step slide" data-x="-11300" data-y="7612" data-z="-310" data-rotate-y="270" data-rotate-z="0" data-rotate-order="zxy">
+                <div class="topCentre redText">2 Initial Decision Making Steps... </div>
+                <div>
+                    <p class="substep" style="font-size: 2.05em; text-align: left; position: relative; top: 0.6em; color:tan">Step 1: <i style="color: white; position: relative; left:0.5em">  Narrow down the options</i> </p>
+                    <p class="substep" style="font-size: 2.05em; text-align: left; position: relative; top: 1.6em; color:tan">Step 2: <i style="color: white; position: relative; left:0.5em">  Evaluate pros/cons of</i><i style="color: white; position: relative; left:3.8em"> remaining Options</i> </p>
+                </div>
+                <div class="notes">
+                    <p>* large number of possibilities... need to narrow it down to make a quick decision</p>
+                    <p>* do a pros/cons to pick best path</p>
+                    <p>* we know that there is a chance to miss an optimal route</p>
+                    <p>* that's the trade off for discarding options</p>
+                </div>
+            </div>
+
+            <div id="factors_for_decisions" class="backgroundSettings step slide" data-x="-11300" data-y="7612" data-z="1200" data-rotate-y="270" data-rotate-z="0" data-rotate-order="zxy">
+                <div class="topCentre redText">Factors In Making Decisions... </div>
+                <div>
+                    <p class="substep" style="font-size: 2.05em; text-align: left; position: relative; top: 0.6em; color:tan">Risk Aversion </p>
+                    <p class="substep" style="font-size: 2.05em; text-align: left; position: relative; top: 0.6em; color:tan">Temporal Discounting</p>
+                    <p class="substep" style="font-size: 2.05em; text-align: left; position: relative; top: 0.6em; color:tan">Certainty Effect </p>
+                    <p class="substep" style="font-size: 2.05em; text-align: left; position: relative; top: 0.6em; color:tan">Keep Options Open </p>
+                </div>
+                <div class="notes">
+                    <p>* If you have 10% chance at winning $1000 but a 10% chance of losing $400 people will not partcipate</p>
+                    <p> * Most people will take $50 now rather than wait and get $100</p>
+                    <p>* You are more likely to pick the car based on colour as opposed to some feature you *may* use in the future </p>
+                    <p>* people make choices based on how many options they might be able to keep open </p>
+                </div>
+            </div>
+
+            <div id="avoid_decisions" class="backgroundSettings step slide" data-x="-11300" data-y="7612" data-z="2700" data-rotate-y="270" data-rotate-z="0" data-rotate-order="zxy">
+                <div class="topCentre redText">We Also Avoid Decisions... </div>
+                <div>
+                    <p class="substep" style="font-size: 2.05em; text-align: left; position: relative; top: 0.6em; color:tan">Status Quo Bias </p>
+                    <p class="substep" style="font-size: 2.05em; text-align: left; position: relative; top: 0.6em; color:tan">Omission Bias</p>
+                    <p class="substep" style="font-size: 2.05em; text-align: left; position: relative; top: 0.6em; color:rgb(198, 140, 210)">Anticipated Regret </p>
+                    <p class="substep" style="font-size: 2.05em; text-align: left; position: relative; top: 0.6em; color:tan">Reactance Bias </p>
+                </div>
+                <div class="notes">
+                    <p>* You don't like options because of unknown impacts</p>
+                    <p>* You are more likely to leave a 'receive spam' button marked then to read through to find the option</p>
+                    <p>* Any option which might be something you regret in the future will be avoided </p>
+                    <p>* When someone says you can choose anything you want, EXCEPT this option </p>
+                </div>
+            </div>
+
+            <div id="understanding_half_battle" class="step " data-x="-11300" data-y="7612" data-z="4200" data-rotate-y="270" data-rotate-z="0" data-rotate-order="zxy">
+
+                <div>
+                    <img src="images/knowing_half_battle.jpg"  style="height: 80%; width: 90%; position: relative; left: 2em; top: 2em " >
+                </div>
+                <div class="notes">
+                    <p>* If you want to avoid mistakes, you need to know WHY they happened</p>
+                    <p>* to do that you need to know how people make decisions under pressure</p>
+                    <p>* we want to know WHY this happened. Not focus on counter factuals</p>
+                    <p>* Counter factuals are a bi-product of hindsight, NOT missed opportunities</p>
+                </div>
+            </div>
+
+
+            <div id="psych_safety1" class="backgroundSettings step slide" data-x="-10900" data-y="8000" data-z="5700" data-rotate-y="270" data-rotate-z="-90"  data-rotate-order="zxy">
+                <div class="centre redText"> Psychological Safety </div>
+                <div class="notes">
+                    <p>* in 1999 Amy Edmonson studied clinical teams</p>
+                    <p>* she found that high performing teams make more mistakes than low performing teams</p>
+                    <p>* but they saved more lives as well</p>
+                    <p>* Amy Edmonson discovered was that the high performing teams were admitting to more mistakes</p>
+                </div>
+            </div>
+
+            <div id="chance_to_fix" class="honeyCombBackgroundSettings step slide" data-x="-9800" data-y="8000" data-z="5700" data-rotate-y="270" data-rotate-z="-90"  data-rotate-order="zxy">
+                <div>
+                    <img src="images/swept_under_rug.jpg"  style="height: 80%; width: 90%; position: relative; left: 2em; top: 3em " >
+                </div>
+                <div class="notes">
+
+                    <p>* whereas the low performing teams, where more people died, were hiding theirs</p>
+                    <p>* most of the time people sweep things under the rug for fear of reprisal</p>
+                </div>
+            </div>
+
+            <div id="admit_failure" class="backgroundSettings step slide" data-x="-8700" data-y="8000" data-z="5700" data-rotate-y="270" data-rotate-z="-90"  data-rotate-order="zxy">
+                <div>
+                    <img src="images/fear_of_failure.jpg"  style="height: 80%; width: 90%; position: relative; left: 2em; top: 3em " >
+                </div>
+                <div class="notes">
+
+                    <p>* no one wants to be the lone voice to speak up</p>
+                    <p>* your entire team needs to be onboard</p>
+                    <p>* if you don't get this right, morale suffers greatly</p>
+                    <p>* often manifests in people putting in minimum effort</p>
+                </div>
+            </div>
+
+            <div id="toil" class=" step " data-x="-7600" data-y="8000" data-z="5700" data-rotate-y="270" data-rotate-z="-90"  data-rotate-order="zxy">
+                <div>
+                    <img src="images/ball_and_chain_woman.jpeg"  style="height: 80%; width: 90%; " >
+                </div>
+                <div class="notes">
+                    <p>* remember our talk on toil?</p>
+                    <p>* backlogs will suffer or become meaningless</p>
+                    <p>* aligning people with where their talents and passions are can off set this</p>             
+                </div>
+            </div>
+
+
+            <div id="red_hat_does_well" class="backgroundSettings step slide" data-x="-7600" data-y="8000" data-z="4000" data-rotate-y="270" data-rotate-z="-90"  data-rotate-order="zxy">
+                <div class="topCentre redText"> Red Hat Does This Well</div>
+                <div>
+                    <img src="images/find_where_you_fit_graphic.png"  style="height: 80%; width: 90%;  position: relative; top: 0.7em;  left: 2em " >
+                </div>
+                <div class="notes">
+                    <p>* putting people where they are interested to be means higher quality output</p>
+                    <p>* sure no job is perfect</p>
+                    <p>* When you are passionate about a thing, you are significantly more likely to speak up</p>             
+                </div>
+            </div>
+            
+            <div id="create_safety" class="backgroundSettings step slide" data-x="-8700" data-y="8000" data-z="3500" data-rotate-y="270" data-rotate-z="-90"  data-rotate-order="zxy">
+                <div class="topCentre redText">How To Grow This </div>
+                <div>
+                    <p class="substep" style="font-size: 1.6em; text-align: left; position: relative; top: 0.6em; color:tan">Leadership needs to admit their fallibility </p>
+                    <p class="substep" style="font-size: 1.6em; text-align: left; position: relative; top: 0.6em; color:tan">Make this a priority</p>
+                    <p class="substep" style="font-size: 1.6em; text-align: left; position: relative; top: 0.6em; color:rgb(198, 140, 210)">Establish norms for how mistakes are handled </p>
+                    <p class="substep" style="font-size: 1.6em; text-align: left; position: relative; top: 0.6em; color:tan">Create space for new ideas </p>
+                    <p class="substep" style="font-size: 1.6em; text-align: left; position: relative; top: 0.6em; color:tan">Embrace Productive Conflict </p>
+                    <p class="substep" style="font-size: 1.6em; text-align: left; position: relative; top: 0.6em; color:tan">The time of day matters </p>
+
+                </div>
+                <div class="notes">
+                    <p>* leadership needs to admit</p>
+                    <p>* make it priority</p>
+                    <p>*  * show empathy... what if it was you?</p>
+                    <p>* new norms for handling mistakes</p> 
+                    <p>*  * don't punish experimentation/risk taking (within reason) </p>
+                    <p>* * encourage learning from failure</p>
+                    <p>* * openly share lessons learned</p>
+                    <p>* create space</p>
+                    <p>* embrace conflict</p>
+                    <p>* * how do we manage conflicting perspectives</p>
+                    <p>* time of day</p>
+                    <p>* * when you get mature enough, attempting to time this based on personalities in the team is good</p>
+                    <p>* * there is a whole science around "when"</p>
+                </div>
+            </div>
+
+
+            <div id="stage1" class="purpleGreenBackgroundSettings step slide" data-x="-9800" data-y="8000" data-z="2400" data-rotate-y="270" data-rotate-z="-90"  data-rotate-order="zxy">
+                <div class="topCentre redText">Four Stages Of Safety</div>
+                <div>
+                    <img src="images/inclusion.png"  style="height: 80%; width: 90%;  position: relative; top: 0.7em;  left: 2em " >
+                </div>  
+                <div class="notes">
+                    <p>* fear of rejection or embarassment</p>
+                    <p>* we want to be included</p>
+                    <p>* acceptance boosts confidence</p>             
+                </div>        
+            </div>
+
+            <div id="stage2" class="backgroundSettings step slide" data-x="-9800" data-y="10000" data-z="2000" data-rotate-y="270" data-rotate-z="-90"  data-rotate-order="zxy">
+                <div class="topCentre redText">Four Stages Of Safety: Learner</div>
+                <div>
+                    <img src="images/learner.jpg"  style="height: 80%; width: 90%;  position: relative; top: 0.7em;  left: 2em " >
+                </div>
+                <div class="notes">
+                    <p>* being heard is important</p>
+                    <p>* mistakes will be made</p>
+                    <p>* some engagement, but still feeling vulnerable</p>             
+                </div>
+            </div>
+
+            <div id="stage3" class="backgroundSettings step slide" data-x="-9564" data-y="10000" data-z="3331" data-rotate-y="270" data-rotate-z="-90"  data-rotate-x="-20" data-rotate-order="zxy">
+                <div class="topCentre redText">Four Stages Of Safety: Contributor</div>
+                <div>
+                    <img src="images/contributor.jpg"  style="height: 80%; width: 90%;  position: relative; top: 0.7em;  left: 2em " >
+                </div>
+                <div class="notes">
+                    <p>* actively participates</p>
+                    <p>* enthusiastic and changes</p>
+                    <p>* starting to feel confident. Empowerment is very important</p>             
+                </div>
+            </div>
+
+            <div id="stage4" class="backgroundSettings step slide" data-x="-8735" data-y="10000" data-z="4488" data-rotate-y="270" data-rotate-z="-90"  data-rotate-x="-50"data-rotate-order="zxy">
+                <div class="topCentre redText">Four Stages Of Safety: Challenger</div>
+                <div>
+                    <img src="images/unafraid.jpg"  style="height: 80%; width: 90%;  position: relative; top: 0.7em;  left: 2em " >
+                </div>
+                <div class="notes">
+                    <p>* innovative, creative and without fear of rejction</p>
+                    <p>* encourages questioning of their ideas</p>
+                    <p>* sees potential for success through failure</p>    
+                    <p>TAKE A BREAK AT THIS SLIDE</p>
+         
+                </div>
+            </div>
+
+            <div id="post_mortem_title" class="sunBackgroundSettings step slide" data-x="-7300" data-y="10000" data-z="5000" data-rotate-y="270" data-rotate-z="-90"  data-rotate-x="-92" data-rotate-order="zxy">
+                <div class="centre redText">Post Mortems</div>
+                
+            </div>
+
+            <div id="pm_what_not_to_do1" class="backgroundSettings step slide" data-x="-5880" data-y="10000" data-z="4543" data-rotate-y="270" data-rotate-z="-90"  data-rotate-x="-125" data-rotate-order="zxy">
+                <div class="topCentre redText">What Not To Do: Chain of Events</div>
+
+                <div>
+                    <img src="images/chain-of-events-red.jpg"  style="height: 80%; width: 90%;  position: relative; top: 0.7em;  left: 2em " >
+                </div>
+                <div class="notes">
+                    <p>* I've mentioned it already. </p>
+                    <p>* chains have a start, middle and end</p>
+                    <p>* all linked together (more or less)</p>
+                    <p>* need to avoid linear thinking</p>
+                    <p>* while you need to pick a starting point out of necessity</p>
+                    <p>* don't forget things can happen simultaneously</p>
+                    <p>* chain of events treat cause an effect to be about the same magnitude</p>
+                    <p>* ther are ALWAYS large number of factors</p>
+                </div>
+            </div>
+
+            <div id="pm_what_not_to_do2" class="backgroundSettings step slide" data-x="-4981" data-y="10000" data-z="3410" data-rotate-y="270" data-rotate-z="-90"  data-rotate-x="-158" data-rotate-order="zxy">
+                <div class="topCentre redText">What Not To Do: Root Cause</div>
+                <div>
+                    <img src="images/root_cause_tree.jpg"  style="height: 80%; width: 70%;  position: relative; top: 0.7em;  left: 5em " >
+                </div>
+                <div class="notes">
+                    <p>* a root cause is simply where you stopped looking for problems</p>
+                    <p>* semantics matter</p>
+                    <p>* try thinking in terms of what triggered the incident</p>             
+                </div>
+            </div>
+
+            <div id="pm_what_not_to_do3" class="backgroundSettings step slide" data-x="-8735" data-y="6000" data-z="4008" data-rotate-y="270" data-rotate-z="-90"  data-rotate-x="-57"data-rotate-order="zxy">
+                <div class="topCentre redText">What Not To Do: Group Meetings</div>
+                <div>
+                    <img src="images/single_person_interview.png"  style="height: 80%; width: 90%;  position: relative; top: 0.7em;  left: 2em " >
+                </div>
+                <div class="notes">
+                    <p>* Resist the urge to have a group meeting... at first</p>
+                    <p>* memory will conform to what sounds about right</p>
+                    <p>* need to have a neutral person who gathers the facts before having a meeting</p>
+                    <p>* we want to try avoiding "refreshing" people's memories</p>
+                </div>
+            </div>
+
+
+            <div id="pm_what_not_to_do4" class="backgroundSettings step slide" data-x="-8735" data-y="3000" data-z="4408" data-rotate-y="270" data-rotate-z="-90"  data-rotate-x="-57"data-rotate-order="zxy">
+                <div class="topCentre redText">What Not To Do: Personal Reporting</div>
+                <div>
+                    <img src="images/stand_out.jpg"  style="height: 80%; width: 90%;  position: relative; top: 0.7em;  left: 2em " >
+                </div>
+                <div class="notes">
+                    <p>* the person(s) involved should not create initial report</p>
+                    <p>* you are trying to recreate the world at each critical junction</p>
+                    <p>* experts aren't always good at telling you why they are an expert</p>
+                    <p>* they often need outside help to reconstruct events</p>
+                </div>
+            </div>
+
+            <div id="pm_what_not_to_do5" class="backgroundSettings step slide" data-x="-8735" data-y="0" data-z="4408" data-rotate-y="270" data-rotate-z="-90"  data-rotate-x="-57"data-rotate-order="zxy">
+                <div class="topCentre redText">What Not To Do: Simplest Answer</div>
+                <div>
+                    <img src="images/simple_answer.jpg"  style="height: 60%; width: 80%;  position: relative; top: 3em;  left: 4em " >
+                </div>
+                <div class="notes">
+                    <p>* Occam's razor is a thing: simplest of competing theories be preferred to the more complex</p>
+                    <p>* however in this context, simplest answer often leads to who/what triggered the event</p>
+                    <p>* this leads to blame</p>
+                    <p>* This can signal to the rest of the company that you are interested in</p>
+                    <p>* * quick answers</p>
+                    <p>* * assigning blame</p>
+                </div>
+            </div>
+            
+            <div id="USDA" class="darkWithSpotsSettings step slide" data-x="-8735" data-y="-3000" data-z="4408" data-rotate-y="270" data-rotate-z="-90"  data-rotate-x="-57"data-rotate-order="zxy">
+                <div class="topCentre redText">USDA Learning Guide</div>
+                <div>
+                    <img src="images/usda_fs_logo.png"  style="height: 80%; width: 60%;  position: relative; top: 0.7em;  left: 7em " >
+                </div>
+            </div>
+
+            <div id="usda_quote" class="step" data-x="-8735" data-y="-5000" data-z="4408" data-rotate-y="270" data-rotate-z="-90"  data-rotate-x="-57"data-rotate-order="zxy">
+                <div>
+                    <img src="images/USDA_forest_quote.png"  style="height: 80%; width: 90%;  position: relative; top: 0.7em;  left: 2em " >
+                </div>
+            </div>
+
+            
+            <div id="what_to_do" class="darkWithStripesSettings step slide" data-x="-8735" data-y="-6000" data-z="4408" data-rotate-y="270" data-rotate-z="-90"  data-rotate-x="-360"data-rotate-order="zxy">
+                <div class="centre redText">What Can You Do?</div>
+                
+            </div>
+            <div id="questions1" class="darkWithStripesSettings step slide" data-x="1000" data-y="-2000" data-z="4408" data-rotate-y="270" data-rotate-z="-90"  data-rotate-x="-360"data-rotate-order="zxy">
+                <div class="topCentre redText">Prompting Questions</div>
+                <div>
+                    <p class="substep" style="font-size: 1.6em; text-align: left; position: relative; top: 0.6em; color:tan">What Did You See? </p>
+                    <p class="substep" style="font-size: 1.6em; text-align: left; position: relative; top: 0.6em; color:tan">What Knowledge Did You Have?</p>
+                    <p class="substep" style="font-size: 1.6em; text-align: left; position: relative; top: 0.6em; color:tan">What Actions Were Taken?</p>
+                    <p class="substep" style="font-size: 1.6em; text-align: left; position: relative; top: 0.6em; color:tan">What Was Observed? </p>
+                    <p class="substep" style="font-size: 1.6em; text-align: left; position: relative; top: 0.6em; color:tan">What Did You Expect? </p>
+                </div>
+                <div class="notes">
+                    <p>* What did you see</p>
+                    <p>* What Knowledge did you have</p>
+                    <p>* What actions were taken</p>
+                    <p>* What was observed</p>
+                    <p>* What Did you expect?</p>
+                </div>
+            </div>
+
+            <div id="questions2" class="darkWithStripesSettings step slide" data-x="2000" data-y="-1000" data-z="4408" data-rotate-y="270" data-rotate-z="-90"  data-rotate-x="-57"data-rotate-order="zxy">
+                <div class="topCentre redText">Prompting Questions</div>
+
+                <div>
+                    <p class="substep" style="font-size: 1.6em; text-align: left; position: relative; top: 0.6em; color:tan">What Assumptions Existed? </p>
+                    <p class="substep" style="font-size: 1.6em; text-align: left; position: relative; top: 0.6em; color:tan">What Was Your Impression Of the Situation As It Happened? </p>
+                    <p class="substep" style="font-size: 1.6em; text-align: left; position: relative; top: 0.6em; color:tan">What Options Did You Think You Had? </p>
+                    <p class="substep" style="font-size: 1.6em; text-align: left; position: relative; top: 0.6em; color:purple">What Made This Situation Difficult? </p>
+                    <p class="substep" style="font-size: 1.6em; text-align: left; position: relative; top: 0.6em; color:rgb(64, 241, 20)">Where Did We Get Lucky? </p>
+
+                </div>
+                <div class="notes">
+                    <p>* What assumptions existed</p>
+                    <p>* What Was Your Impression Of the situation As It Happened?</p>
+                    <p>* What Options Did you think you had?</p>
+                    <p>* What made the situation difficult</p>
+                    <p>* Where did we get lucky</p>
+                </div>
+            </div>
+
+
+            <div id="be_new" class="backgroundSettings step slide" data-x="2000" data-y="-1000" data-z="2308" data-rotate-y="270" data-rotate-z="-90"  data-rotate-x="-57"data-rotate-order="zxy">
+                <div class="topCentre redText">Don't Be Afraid to Be New</div>
+                <div class="substep">
+                    <img src="images/simpsons_first_day.gif"  style="height: 80%; width: 70%;  position: relative; top: 0.7em;  left: 6em " >
+                </div>
+                <div class="notes">
+                    <p>* it is useful to take the vulnerable position of not knowing when conducting the review</p>
+                    <p>* genuinely asking for help will get a good response</p>
+                    <p>* with some practice you can coax people to explain things simply which forces them to think through their answers</p>
+                </div>
+            </div>
+            
+            <div id="limit_knowledge" class="rippleBackgroundSettings step slide" data-x="2000" data-y="-1000" data-z="1000" data-rotate-y="270" data-rotate-z="-90"  data-rotate-x="-360"data-rotate-order="zxy">
+                <div class="topCentre redText">Just Say No One Needs To Know</div>
+                <div>
+                    <img src="images/NEO-STOPS-BULLETS.jpg"  style="height: 70%; width: 90%;  position: relative; top: 0.7em;  left: 2em " >
+                </div>
+                <div class="notes">
+                    <p>* Where possible limit outsiders knowing "who" did it</p>
+                    <p>* successful orgs don't make it known who is on call (outside of the paging system which need to know)</p>
+                    <p>* the message: it doesn't matter who was on when the mistake was made...</p>
+                    <p>* when we consider environmental factors, anyone could have done it... therefore irrelevent</p>
+                </div>
+            </div>
+
+            <div id="recommendations_not_causes" class="backgroundSettings step slide" data-x="2000" data-y="-1000" data-z="-400" data-rotate-y="270" data-rotate-z="-90"  data-rotate-x="-360"data-rotate-order="zxy">
+                <div class="topCentre redText">Recommendations Not Root Causes</div>
+                <div>
+                    <img src="images/recommendations.jpg"  style="height: 80%; width: 90%;  position: relative; top: 0.7em;  left: 2em " >
+                </div>
+                <div class="notes">
+                    <p>* orgs have to be careful not to fall into old habbits</p>
+                    <p>* particularly if 'real' recommendations are rejected</p>
+                    <p>* they could be rejected because of too much faith in the systems or not enough trust in the reporting structure</p>
+                    <p>* if management turns a blind eye or ignores solid recommendations, the company will see little change </p>
+                    <p>* eventually real recommendations will dry up</p>
+                    <p>* left with things the workers think might actually get fixed instead of what actually needs work</p>
+                    <p>* more likely reports will be no-nonesense because person writing was not involved in incident (no feelings)</p>
+                </div>
+            </div>
+
+            <div id="be_humble" class="step " data-x="2000" data-y="-1000" data-z="-2000" data-rotate-y="270" data-rotate-z="-90"  data-rotate-x="-360"data-rotate-order="zxy">
+                <div >
+                    <img src="images/be_humble.jpg"  style="height: 80%; width: 90%;  " >
+                </div>
+                <div class="notes">
+                    <p>* If I had to sum up, organizations need to be humble</p>
+                </div>
+            </div>
+
+            <div id="cant_grow" class=" step " data-x="2000" data-y="-1000" data-z="-3600" data-rotate-y="270" data-rotate-z="-90"  data-rotate-x="-360"data-rotate-order="zxy">
+                <div >
+                    <img src="images/growth.jpg"  style="height: 80%; width: 90%;  " >
+                </div>
+                <div class="notes">
+                    <p>* the path to success will have setbacks</p>
+                    <p>* no method is perfect</p>
+                    <p>* those who have a full head have no more room for knowledge</p>
+                    <p>* if you think you already know, you'll never learn or grow</p>
+                </div>
+            </div>
+
+            <div id="finished" class=" step" data-x="2000" data-y="-1000" data-z="-5400" data-rotate-y="270" data-rotate-z="-90"  data-rotate-x="-360"data-rotate-order="zxy">
+                <div >
+                    <img src="images/finished_donkey_kong.png"  style="height: 80%; width: 90%;  " >
+                </div>
+            </div>
+            <!-- These load the actual JS. In this case a relative path to a js folder-->
+        <script src="js/impress.js"></script>
+        <script>impress().init();</script>
+    
+
+</body></html>

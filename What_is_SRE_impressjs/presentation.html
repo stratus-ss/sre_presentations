@@ -1,0 +1,207 @@
+<html lang="en">
+    <!-- 
+        Throughout this slide deck you will see a lot of empty div's. This is because I am using custom css grids with the following spacing:
+        1fr 10fr 1fr
+        This is to help deal with different screen/projector resolutions. It makes the code look slightly messy but I always want the main elements 
+        in the middle div so that it displays correctly. This is my first attempt at html/css in over 10 years. I am sure there are a lot of things 
+        that could be improved upon
+    -->
+    <head>
+        <title>What is SRE</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=1024">
+        <meta name="author" content="Steve Ovens">
+        <!-- I am using the css available from the impress.js github-->
+        <link href="css/impress-demo.css" rel="stylesheet">
+        <link href="css/classic-slides.css" rel="stylesheet">
+        <link href="css/mermaid.forest.css" rel="stylesheet">
+        <link href="css/github.css" rel="stylesheet">
+        <!-- These are my local css styles -->
+        <link href="css/local_custom.css" rel="stylesheet">
+    </head>
+    <!-- This is required for impress.js to work properly-->
+    <body class="impress-not-supported" style="background-color: darkgray;">
+        <!-- Set a fall back message. I am using the one from the demo because... why not?-->
+        <div class="fallback-message">
+            <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+            <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+        </div>
+
+        <div id="impress" style="perspective: 1000px;">
+            
+            <div id="what_is_sre" class="backgroundSettings step slide" data-x="0" data-y="0" data-z="0">
+                <div class="centre whiteText" ><b style="position: relative; bottom: 1em">What is Site Reliability Engineering (SRE)?</b></div>
+                <div class="notes">
+                    <p>When I first entered IT there were 2 groups</p>
+                    
+                </div>
+            </div>
+
+            
+            <div id="devs" class="step" data-x="-7200" data-y="6800" data-z="4000">
+                <div>
+                    <img src="images/developers.png" style="height: 130%; width: 130%; position: relative; right: 1em" >                
+                </div>
+                <div class="notes">
+                    <p>Create Software</p>
+                    <p>Features and bug fixes</p>
+                    <p>Throw the code over the wall</p>
+                    <p>Limited or no access in prod-like environments</p>
+                </div>
+            </div>
+
+            <div id="sysadmins" class="step"  data-x="-6200" data-y="4500" data-z="4000">
+
+                <div>
+                    <img src="images/sysadmin.png" style="height: 130%; width: 130%; position: relative; right: 1em " >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Provision nmew systems</p>
+                    <p>Deploy & update applications</p>
+                    <p>Monitoring, incident managment etc</p>
+                </div>
+            </div>
+            
+            <div id="blame" class="slide step rippleBackgroundSettings"  data-x="-9600" data-y="5000" data-z="4000 data-rotate-x="180" data-rotate-y="00" data-rotate-z="300" data-rotate-order="xyz">
+                <div class="topCentre whiteText"><b>The Blame Game</b></div>
+                <div>
+                    <img src="images/dilbert_blame.png" style="height: 60%; width: 100%; position: relative; top: 3em;" >
+                </div>
+                <div class="notes">
+                    <p>This lead to a culture of name and shame</p>
+                </div>
+            </div>
+
+            <div id="google_sre" class="step"  data-x="-8200" data-y="5000" data-z="4000" data-rotate-x="180" data-rotate-y="00" data-rotate-z="300" data-rotate-order="xyz">
+                <div>
+                    <img src="images/site-reliability-social.jpg" style="height: 130%; width: 130%; position: relative; right: 1em " >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p> Google created the concept of Site Reliability Engineering in 2004 because traditional Sysadmins don't scale</p>
+                    <p> The idea? Treat Ops like a software engineering problem</p>
+                    <p>50/50 split between operations and engineering tasks</p>
+                </div>
+            </div>
+
+            <div id="end_user" class="step"  data-x="-6200" data-y="5000" data-z="4000" data-rotate-x="270" data-rotate-y="00" data-rotate-z="300" data-rotate-order="xyz">
+                <div>
+                    <img src="images/user_experience.jpg" style="height: 150%; width: 130%; position: relative; right: 1em " >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p> At the end of the day, no one actually cares about the platform </p>
+                    <p>The focus on SRE is all about the end user experience</p>
+                    <p>Traditional Operations KPIs (mostly) no longer apply</p>
+                    <p>reorients the focal point away from individual systems and performance towards the goal of making end user happy</p>
+                </div>
+            </div>
+
+
+            <div id="sublinear_scaling" class="slide step rippleBackgroundSettings" data-x="1600" data-y="200" data-z="400">
+                <div>
+                    <div class="topCentre whiteText"><b>A Scaling Problem</b></div>
+                </div>
+                <div>
+                    <img src="images/sublinear_scaling.png" style="height: 70%; width: 100%; position: relative; top: 3em;" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p></p>
+                </div>
+            </div>
+
+
+
+            <div id="toil" class="slide step purpleBackgroundSettings" data-x="0" data-y="1200" data-z="100">
+                <div>
+                    <div class="topCentre whiteText"><b>TOIL</b></div>
+                </div>
+                <div>
+                    <img src="images/busywork.jpg" style="height: 70%; width: 100%; position: relative; top: 2em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p></p>
+                </div>
+            </div>
+
+            <div id="error_budget" class="step"  data-x="-7200" data-y="3000" data-z="4000">
+                <div>
+                    <img src="images/error-budget.png" style="height: 130%; width: 130%; position: relative; right: 1em " >
+                </div>
+                <div class="notes">
+                    <p> Error budgets are an important concept in SRE.</p>
+                    <p>In essence, once you figure out what constitutes an error for an application you can "spend" errors to make improvements</p>
+                    <p>Availability is expensive; Errors are ok</p>
+                </div>
+            </div>
+
+            <div id="pager" class="slide step sunBackgroundSettings" data-x="2500" data-y="3600" data-z="600">
+                <div>
+                    <div class="topCentre redText"><b>Give Back The Pager</b></div>
+                </div>
+                <div>
+                    <img src="images/pager.jpeg" style="height: 70%; width: 100%; position: relative; top: 2em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>If error budget is exceeded, management wants to go ahead anyways</p>
+                    <p>SRE team gives up responsibility for the application</p>
+                    <p>Give Back the pager</p>
+                </div>
+            </div>
+            <div id="devsops_sre" class=" step " data-x="3000" data-y="1200" data-z="11100">
+
+                <div>
+                    <img src="images/devops_or_sre.jpg" style="height: 140%; width: 140%; position: relative; right: 2em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>DevOps is a bridging of the gap between traditional Dev and Operations</p>
+                    <p>DevOps is where Ops sits with Dev or vice versa and there is a cooperation between the two worlds</p>
+                    <p>SRE is a way to implement DevOps</p>
+                    <p>SRE is usually a team made up of a diverse set of skills with an engineering mindset</p>
+                </div>
+            </div>
+            
+
+            <div id="summation" class="slide step squaresBackgroundSettings" data-x="-3000" data-y="1400" data-z="11100">
+                <div>
+                    <div class="topCentre WhiteText"><b>Remember...</b></div>
+                </div>
+                <div>
+                    <img src="images/pointless_work.gif" style="height: 50%; width: 50%; position: relative; right: 1.5em; top: 1em" >
+                </div>
+                <div>
+                    <img src="images/error.gif" style="height: 50%; width: 50%; position: relative; left: 21em; bottom: 1em" >
+                </div>
+                <div class="notes">
+                    <p>We are trying to eliminate the pointless work</p>
+                    <p>So that we can improve our processes and manage out error budget more effictively</p>
+                    <p>In the end it's all about serving the end user better</p>
+                </div>
+            </div>
+
+            <div id="end" class=" step " data-x="0" data-y="4200" data-z="100">
+                <div>
+                    <img src="images/the_end.jpg" style="height: 100%; width: 120%; position: relative; right: 1em" >
+                </div>
+                <div></div>
+            </div>
+            <div id="is_it" class=" step " data-x="-1500" data-y="-6800" data-z="1100" data-rotate-x="180" data-rotate-y="00" data-rotate-z="300" data-rotate-order="xyz">
+                <div class="redText topCentre"><b>Or Is It...?</b></div>
+            </div>
+
+            <!-- These load the actual JS. In this case a relative path to a js folder-->
+            <script src="js/impress.js"></script>
+            <script src="js/highlight.pack.js"></script>
+            <script>impress().init();</script>
+            <script>hljs.initHighlightingOnLoad();</script>
+    
+
+
+        </div>
+    </body
+></html>

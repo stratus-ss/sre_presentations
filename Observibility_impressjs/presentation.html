@@ -1,0 +1,261 @@
+<html lang="en">
+    <!-- 
+        Throughout this slide deck you will see a lot of empty div's. This is because I am using custom css grids with the following spacing:
+        1fr 10fr 1fr
+        This is to help deal with different screen/projector resolutions. It makes the code look slightly messy but I always want the main elements 
+        in the middle div so that it displays correctly. This is my first attempt at html/css in over 10 years. I am sure there are a lot of things 
+        that could be improved upon
+    -->
+    <head>
+        <title>Demystifying Observability</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=1024">
+        <meta name="author" content="Steve Ovens">
+        <!-- I am using the css available from the impress.js github-->
+        <link href="css/impress-demo.css" rel="stylesheet">
+        <link href="css/classic-slides.css" rel="stylesheet">
+        <link href="css/mermaid.forest.css" rel="stylesheet">
+        <link href="css/github.css" rel="stylesheet">
+        <!-- These are my local css styles -->
+        <link href="css/local_custom.css" rel="stylesheet">
+    </head>
+    <!-- This is required for impress.js to work properly-->
+    <body class="impress-not-supported" style="background-color: rgb(73, 72, 72);">
+        <!-- Set a fall back message. I am using the one from the demo because... why not?-->
+        <div class="fallback-message">
+            <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+            <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+        </div>
+
+        <div id="impress" style="perspective: 1000px;">
+            
+            <div id="problem_statement" class="darkWithSpotsSettings step slide" data-x="0" data-y="0" data-z="0">
+                <div class="topCentre whiteText"><b>What Is The Problem?</b></div>
+                <div>
+                    <img src="images/question_marks.png" style="height: 80%; width: 60%; position: relative; left: 6em; top: 1em" >                
+                </div>
+                <div class="notes">
+                    <p>What do you do when you have a problem in your application?</p>
+                    <p>When you have a monolith troubleshooting is tedious but straight forward</p>
+                    <p>What do you do when you have micro services or distributed architecture?</p>
+                    <p>Observability is all about figuring out what is going on in a system</p>
+                </div>
+            </div>
+
+            
+            <div id="what_is_Observability" class="step slide darkWithStripesSettings" data-x="-7200" data-y="6800" data-z="4000">
+                <div class="topCentre whiteText"><b>What Is Observability</b></div>
+                <div>
+                    <img src="images/tourist_binoculars.jpg" style="height: 80%; width: 100%; position: relative; " >                
+                </div>
+                <div class="notes">
+                    <p>Observibility and monitoring are different. Monitoring is a list of failure conditions that are known. </p>
+                    <p>Observability involves emitting any and all data points that you may need in the future. </p>
+                    <p>In a very real way Observability extends monitoring even though they are distinct items</p>
+                </div>
+            </div>
+
+            <div id="what_makes_observible" class="slide step rippleBackgroundSettings"  data-x="-7200" data-y="5000" data-z="4000">
+                <div>
+                    <div class="topCentre whiteText"><b>What Makes A System Observable?</b></div>
+                </div>
+                <div>
+                    <img src="images/woman_in_front_of_metrics.png" style="height: 70%; width: 100%; position: relative; top: 3em " >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Observibility enables you to answer previously unknown questions</p>
+                    <p>Observibility aims to provide highly granular insights into the behavior of systems along with rich context</p>
+                    <p>A system built with Observability will be ruled out the quickest in the event of a failure</p>
+                    <p>Most of your time will be spent working on systems without the same level of data</p>
+                </div>
+            </div>
+            
+            <div id="3steps" class="slide step squaresBackgroundSettings"  data-x="-8800" data-y="3000" data-z="4000">
+                <div>
+                    <div class="topCentre whiteText"><b>3 Steps of Observability</b></div>
+                </div>
+                <div>
+                    <img src="images/3_steps_observibility.png" style="height: 40%; width: 100%; position: relative;  top: 6em;" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Collect</p>
+                    <p>Monitor</p>
+                    <p>Analyze</p>
+                    <p>This doesn't mean innondating yourself with every metric under the sun!</p>
+                    <p>Brian Cantrel has a good talk about this and he's a prolific speaker</p>
+                </div>
+            </div>
+
+            
+            <div id="church_of_monitoring" class="slide step squaresBackgroundSettings"  data-x="-7100" data-y="3000" data-z="4000" >
+
+                <video width="850" height="750" controls style="position: relative; bottom: 1.5em; left: 4em">
+                    <source src="videos/Cantrel_church_of_monitoring.mkv">
+                </video>
+                <div></div>
+            </div>
+
+
+            <div id="key_area_metrics" class="slide step darkWithStripesSettings"  data-x="2500" data-y="3600" data-z="600">
+                <div>
+                    <div class="topCentre whiteText"><b>Get A Baseline!</b></div>
+                </div>
+                <div>
+                    <img src="images/monitoring_logo.png" style="height: 60%; width: 80%; position: relative;   top: 5em; left: 3em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>The only way to know how you are doing is to know where you came from</p>
+                    <p>Engineers must consciously code their application to emit metrics</p>
+                    <p>Metrics gives you a time where something _may_ have gone wrong</p>
+                    <p>It does not show you _what_ went wrong</p>
+                    <p>The problem with monitoring, you are only looking for known problems</p>
+                    <p>Monitoring: KISS</p>
+                </div>
+            </div>
+
+            <div id="key_area_tracing" class="slide step" style="background-color: rgb(226, 226, 226);" data-x="0" data-y="2200" data-z="100">
+                <div>
+                    <div class="topCentre redText"><b>Some Tracing Required!</b></div>
+                </div>
+                <div>
+                    <img src="images/tracing_icons.png" style="height: 70%; width: 100%; position: relative;  top: 4em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>The goal is to emit enough data to allow for easy debugging</p>
+                    <p>You don't know what you will need to handle unforseen problems</p>
+                    <p>Tracing is the end-to-end journey of a user request</p>
+                </div>
+            </div>
+
+            <div id="tracing_cont" class="slide step squaresBackgroundSettings" data-x="0" data-y="4200" data-z="100">
+                <div>
+                    <img src="images/generic_trace.png" style="height: 85%; width: 100%; position: relative;  top: 2em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Tracing is a series of spans</p>
+                    <p>A span is a representation of each individual component in the request chain</p>
+                    <p>Applications need to be using a tracing library for maximum effectiveness</p>
+                </div>
+            </div>
+
+            <div id="key_area_logging" class="slide step" style="background-color: rgb(223, 223, 223);" data-x="0" data-y="1200" data-z="100">
+                <div>
+                    <div class="topCentre redText"><b>The Truth Is In The Logs</b></div>
+                </div>
+                <div>
+                    <img src="images/logging_logos.png" style="height: 70%; width: 70%; position: relative;  top: 3em; left: 4em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>You need to have a solid logging solution</p>
+                    <p>Nobody reads logs for fun</p>
+                    <p>Logs are the only thing that can tell you what went wrong</p>
+                    <p>Log: Application, Platform and OS</p>
+                </div>
+            </div>
+
+            <div id="ask_audience" class="slide step darkWithStripesSettings" data-x="4000" data-y="4200" data-z="3500" data-rotate-x="90" data-rotate-y="90" data-rotate-z="0" data-rotate-order="xyz"> 
+                <div>
+                    <img src="images/red_question_marks.jpg" style="height: 100%; width: 100%; position: relative;  left: 1em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>If anyone has done observibility what tools do they use?</p>
+                </div>
+            </div>
+
+            <div id="expensive" class="slide step darkWithStripesSettings" data-x="0" data-y="4200" data-z="1500">
+                <div>
+                    <img src="images/scrooge_counting_money.gif" style="height: 70%; width: 70%; position: relative;  left: 6em; top: 4em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Observability is expensive!</p>
+                </div>
+            </div>
+
+            <div id="tracing_and_logging" class="slide step purpleBackgroundSettings" data-x="1500" data-y="4200" data-z="100">
+                <video width="850" height="750" controls style="position: relative; bottom: 1.5em; left: 4em">
+                    <source src="videos/Sumo_logic_Observability.mkv">
+                </video>
+                <div></div>
+            </div>
+
+            <div id="reduce_volume" class="slide step sunBackgroundSettings" data-x="3000" data-y="4200" data-z="100" data-rotate-x="180" data-rotate-y="00" data-rotate-z="300" data-rotate-order="xyz">
+                <div>
+                    <div class="topCentre redText"><b>That's Too Much Data!</b></div>
+                </div>
+                <div>
+                    <img src="images/reduce.png" style="height: 70%; width: 80%; position: relative;  top: 3em; left: 4em" >
+                </div>
+                <div></div>
+                <div class="notes">
+                    <p>Logging: reduce irrelevant data; establish a feedback loop to get it right</p>
+                    <p>Metrics: Consider a courser grain. Do you really need every 1s? 5s? 10s?</p>
+                    <p>Metrics: Make note of which metrics you use and at what frequency you access them</p>
+                    <p>Tracing: Do you need EVERY request or can you get away with slower sampling?</p>
+                </div>
+            </div>
+
+            <div id="what_do_you_need" class="step slide rippleBackgroundSettings" data-x="3600" data-y="4600" data-z="2000" data-rotate-x="180" data-rotate-y="00" data-rotate-z="300" data-rotate-order="xyz">
+                <div>
+                    <img src="images/what-need-to-know.jpg" style="height: 80%; width: 100%; position: relative; top: 2em" >
+                </div>
+                <div class="notes">
+                    <p>help me understand my app</p>
+                    <p>get to the point!</p>
+                    <p>bring my attention directly to problems</p>
+                    <p>guide me to optimization</p>
+                </div>
+            </div>
+
+            <div id="benefits" class="step slide rippleBackgroundSettings" data-x="4000" data-y="5900" data-z="100" data-rotate-x="180" data-rotate-y="00" data-rotate-z="300" data-rotate-order="xyz">
+                <div>
+                    <div class="topCentre whiteText"><b>Getting Observability Right</b></div>
+                </div>
+                <div>
+                    <img src="images/benefits.jpg" style="height: 80%; width: 100%; position: relative; top: 2em" >
+                </div>
+                <div class="notes">
+                    <p>Catch and resolve problems during development!</p>
+                    <p>Discover and adress 'unknown' unknowns</p>
+                    <p>Potential to enable automated remediation</p>
+                </div>
+            </div>
+
+            <div id="poll" class="backgroundSettings step slide" data-x="4000" data-y="1000" data-z="3100" data-rotate-x="90" data-rotate-y="90" data-rotate-z="300" data-rotate-order="xyz">
+                <div class="topCentre whiteText"><b>http://etc.ch/qRTk</b>
+                    <object style="position: relative; left: 3.5em" type="text/html" data="http://etc.ch/qRTk/?qr" width="1024px" height="768px"></object>
+
+                </div>
+            </div>
+
+            <div id="whatisPoll" class="wrapper step" data-x="4000" data-y="1000" data-z="5100" data-rotate-x="90" data-rotate-y="90" data-rotate-z="300" data-rotate-order="xyz">
+                <object style="position: relative; right: 2em" type="text/html" data="https://directpoll.com/r?XDbzPBd3ixYqg8oulA23yY7iNjyukzN2S1h7IwPyW" width="1024px" height="768px">
+                </object>
+            </div>
+
+            <div id="and_remember" class="slide step darkWithSpotsSettings" data-x="4000" data-y="5900" data-z="1000" >
+                <div>
+                    <div class="topCentre whiteText"><b>And Remember...</b></div>
+                </div>
+                <video width="850" height="750" controls style="position: relative; bottom: 1.5em; left: 4em">
+                    <source src="videos/nobody_reads_logs_for_fun.mkv">
+                </video>
+                <div></div>
+            </div>
+                    
+            <!-- These load the actual JS. In this case a relative path to a js folder-->
+            <script src="js/impress.js"></script>
+            <script src="js/highlight.pack.js"></script>
+            <script>impress().init();</script>
+            <script>hljs.initHighlightingOnLoad();</script>
+    
+        </div>
+    </body
+></html>
