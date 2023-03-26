@@ -1,0 +1,706 @@
+<html lang="en">
+    <!-- 
+        Throughout this slide deck you will see a lot of empty div's. This is because I am using custom css grids with the following spacing:
+        1fr 10fr 1fr
+        This is to help deal with different screen/projector resolutions. It makes the code look slightly messy but I always want the main elements 
+        in the middle div so that it displays correctly. This is my first attempt at html/css in over 10 years. I am sure there are a lot of things 
+        that could be improved upon
+    -->
+    <head>
+        <title>Anatomy Of Good Alerts</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=1024">
+        <meta name="author" content="Steve Ovens">
+        <!-- I am using the css available from the impress.js github-->
+        <link href="css/impress-demo.css" rel="stylesheet">
+        <link href="css/classic-slides.css" rel="stylesheet">
+        <link href="css/mermaid.forest.css" rel="stylesheet">
+        <link href="css/github.css" rel="stylesheet">
+
+        <!-- These are my local css styles -->
+        <link href="css/local_custom.css" rel="stylesheet">
+    </head>
+    <!-- This is required for impress.js to work properly-->
+    <body class="impress-not-supported" style="background-color: rgb(86, 86, 86);">
+        <!-- Set a fall back message. I am using the one from the demo because... why not?-->
+        <div class="fallback-message">
+            <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+            <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+        </div>
+
+        <div id="impress" style="perspective: 1000px;">
+
+             
+            <div id="intro" class="step slide" data-x="-15000" data-y="5000" data-rotate="150" style="background-color: rgb(216, 216, 216);">
+                    
+                <h1 style="text-align: center;" data-mce-style="text-align: center;">&nbsp;<br></h1><h1 style="text-align: center;" data-mce-style="text-align: center;">&nbsp;<br></h1><h1 style="text-align: center;" data-mce-style="text-align: center;">
+                    <span style="font-size: 36pt; color:rgb(7, 74, 110)" data-mce-style="font-size: 36pt;">Alerting Is  
+                        <span style="color: rgb(153, 51, 0);" data-mce-style="color: #993300;">Hard</span>: <br>
+                        Anatomy Of A
+                        <span style="color: rgb(153, 51, 0);" data-mce-style="color: #993300;">Good</span>
+                        Alert
+                    </span><br>
+                </h1>
+                <p style="text-align: left;" >&nbsp;<br><br><br></p>
+                <p style="text-align: left;" >
+                    <span style="font-size: 16pt;" >Steve Ovens <br></span>
+                    <span style="font-size: 16pt;" >Red Hat Architect <br></span>
+                    <span style="font-size: 16pt;" >Mar 2023</span>
+                </p>
+                <div class="notes">
+
+                </div>
+            </div>
+            
+           <!-- The overview should be far enough out for the perspective to show the slides aranged in an acronym-->
+           <div id="overview" class="step" data-x="8000" data-y="3000" data-z="6000" data-scale="17">
+            * Alerting is hard. <br>
+            * everyone thinks they can do alerting <br>
+            * that they have a solid basis <br>
+            * usually a company probably has a ton of alerts... no value <br>
+            * In order to be truly successful, alerts need to have a few traits.
+                USERS<br>
+                Judgment<br>
+                Urgent<br>
+                Actionable<br>
+                Necessary 
+            </div>
+
+            <div id="first_actionable" class="redhatBackgroundSettings step slide" data-x="0" data-y="0" data-z="0">
+                <div class="topCentre whiteText">Actionalble Alerts!</div>
+                    <img src="images/Cut-Action.png" style="height: 90%; width: 80%; position: relative; left: 3em; ">  
+                <div class="notes">
+                    * First, they need to be actionable. <br>
+                    * If there is nothing you can do about it, why alert on it at all. <br>
+                    * presumably there is some action you expect the on-call representative to take.  <br>
+                    * If you don't have a clear idea of what you would like to happen how can anyone else?
+                </div>
+            </div>
+
+            <div id="second_defined" class="redhatBackgroundSettings step slide" data-x="0" data-y="750" data-z="0">
+                <div class="topCentre whiteText">
+                    Clearly Defined Alerts!
+                </div>
+                    <img src="images/problem_well_defined.jpg" style="height: 60%; width: 80%; position: relative; left: 3em; top: 1em ">  
+                <div class="notes">
+                    * alerts need to be clearly defined and understood. <br>
+                    * alerts need to be easy to interpret. <br>
+                    * A lot of times there is some critical portion of information missing. <br>
+                    * If an outside observer has questions then chances are your on-call folks will as well<br>
+                </div>
+            </div>
+
+            <div id="third_relevant" class="redhatBackgroundSettings step slide" data-x="0" data-y="1500" data-z="0">
+                <div class="topCentre whiteText">
+                    Relevant Alerts!
+                </div>
+                <img src="images/Relevant-definition.png" style="height: 45%; width: 70%; position: relative; left: 4em; top: 2em ">  
+
+                <div class="notes">
+                    * alerts need to be relevant to the workload you are running. <br>
+                    * Gone are the days where we wantonly create CPU, memory, disk, network or other alerts. <br>
+                    * the old approach leads to being swamped with too many alerts that may even be red herrings.
+                </div>
+            </div>
+
+            <div id="fourth_UX" class="redhatBackgroundSettings step slide" data-x="0" data-y="2250" data-z="-40" data-rotate-x="0" data-rotate-y="0" data-rotate-z="0" data-rotate-order="xyz">
+                    <div class="topCentre whiteText">
+                        Focused On User Experience!
+                    </div>
+                    <img src="images/cats_caring.jpg" style="height: 65%; width: 70%; position: relative; left: 4em; top: 1em ">  
+
+                    <div class="notes">
+                        * most importantly, alerts need to be focused on the end-user's experience. <br>
+                        * don't just take readings from inside your network, or inside the cluster. <br>
+                        *  A user has no care for, whether your CPU is running at 80% or 5%. <br>
+                        * (In fact you might argue that if you aren't running in the upper 70s, you are under utilizing your hardware and throwing money away). <br>
+                        * can I get my task accomplished? <br>
+                        * If I don't see any degradation in service, the alert should not fire.
+                        * How do you turn these ideas into something tangible?
+                    </div>
+            </div>
+ 
+            <div id="too_much_to_track" class="step textTransitions" data-x="0" data-y="1500" data-z="-5000" data-rotate-x="90" data-rotate-y="0" data-rotate-z="-90" data-rotate-order="xyz">
+                <p class="blackText"><b class="redText scaleDownText">The Problem:</b> Too much to <b class="textTransitions rotating" style="color: darkblue">track</b></p>
+                <div class="notes">
+                    * Let's start by defining what the problem is. <br>
+                    * the problem is that there are so many things to track... alert fatigue is a real problem
+                </div>
+            </div>
+
+            <div id="stress" class="redhatBackgroundSettings step slide" data-x="0" data-y="3000" data-z="0" >
+                <div class="topCentre whiteText">Impacts Of Stress...<br><br></div>
+                <img src="images/messaging_notifications.jpg" style="height: 45%; width: 50%; position: relative; left: 6em; top: 1em ">  
+
+                <div class="notes">
+                    * Alerting and monitoring everything will lead to burn out, missed alerts, mistakes during troubleshooting and so on. <br>
+                    *  There is a real cost to asking people to care about everything. <br>
+                    * Every alert triggers a stress response. <br>
+                    * The stress "budget" that humans have is finite. <br>
+                </div>
+            </div>
+
+            <div id="ignore" class="redhatBackgroundSettings slide step" data-x="1150" data-y="3000" data-z="0" >
+                <div class="topCentre whiteText">They Ignore Things...</div>
+                <div>
+                    <img src="images/moss_ignore_fire.jpg" style="height: 80%; width: 80%; position: relative; left: 3em; " >
+                </div>
+                <div></div>
+                <div class="notes">
+                    * we know that people will start alleviating their own stress <br>
+                    * They will be selective about what they respond to<br>
+                </div>
+            </div>
+
+            <div id="respond_slow" class="redhatBackgroundSettings step slide"  data-x="2200" data-y="3000" data-z="0">
+                <div class="topCentre whiteText">They Slow Down...</div>
+                <div>
+                    <img src="images/slow_response.jpg" style="height: 80%; width: 80%; position: relative; left:2em">
+                </div>
+                <div class="notes">
+                    * A natural response to sress is to slow down <br>
+                </div>
+            </div>
+
+            <div id="throw_over_wall" class="redhatBackgroundSettings step slide"  data-x="2200" data-y="2250" data-z="-40" data-rotate-x="0" data-rotate-y="0" data-rotate-z="0" data-rotate-order="xyz">
+                <div class="topCentre whiteText">They Push Off Work...</div>
+                <div>
+                    <img src="images/throw_over_the_wall.jpg" style="height:80%; width: 80%; position:relative; left: 3em ">
+                </div>
+                <div></div>
+                <div class="notes">
+                    * Thirdly, we know that a common coping mechanism is to punt the work towards another group <br>
+                    * They may respond to an alert and say "well this is a networking issue" <br>
+                    * This may or may not be correct <br>
+                    * the first steps taken to accurately diagnose the issue greatly impact the time to recovery.
+                </div>
+            </div>
+
+            <div id="people_quit" class="redhatBackgroundSettings step slide"  data-x="2200" data-y="1500" data-z="-40" data-rotate-x="0" data-rotate-y="0" data-rotate-z="0" data-rotate-order="xyz">
+                <div class="topCentre whiteText">They Quit...</div>
+                <div>
+                    <img src="images/people_quit.webp" style="height: 90%; width: 85%; position:relative; left: 2em; bottom: 0.7em">
+                </div>
+                <div class="notes">
+                    * your staff will absolutely move on <br>
+                    * This leaves a whole in the rotation <br>
+                    * a hefty training bill to get someone new up to speed <br>
+                    * No one wants to exist in an environment where they feel the only option for relief is to quit.
+                </div>
+            </div>
+
+            <div id="the_problem" class="redhatBackgroundSettings step slide" data-x="2200" data-y="750" data-z="-40" data-rotate-x="0" data-rotate-y="0" data-rotate-z="0" data-rotate-order="xyz">
+                <div>
+                    <img src="images/monitor_all_the_things.jpg" style="height: 90%; width: 85%; position:relative; left: 2em; top: 1em">
+                </div>
+                <div class="notes">
+                    * the industry is still relying on old-school methods <br>
+                    * most operations departments believe that monitoring everything means they don't really have to know how the system works. <br>
+                    * They would of course disagree with that statement <br>
+                    * yet they often inherently rely on an operator's experience and knowledge of an environment to guide and save them in the event of a crisis.
+                </div>
+            </div>
+
+            <div id="3mile" class="step" data-x="2200" data-y="0" data-z="-40" data-rotate-x="0" data-rotate-y="0" data-rotate-z="0" data-rotate-order="xyz">
+                <div>
+                    <img src="images/three_mile_island.jpg" style="height: 110%; width: 110%; position:relative; right: 1em ">
+                </div>
+                <div class="notes">
+                    * we're going to chat about 3 mile island <br>
+                    * This plant worked like this: <br>
+                    * nuclear material is put in close proximity of each other in order to generate heat <br>
+                    * water, when applied to the heat generates steam <br>
+                    * this steam powers a turbine that generates power <br>
+                    * The steam sent to a stack for cooling <br>
+                    * it gets condensed and put back into the loop
+                </div>
+            </div>
+
+            <div id="3mile_problem" class="redhatBackgroundSettings step slide"  data-x="6000" data-y="0" data-z="0">
+                <div>
+                    <img src="images/3_mile_island_reactor_with_arrows.png" style="height: 115%; width: 116%; position: relative; bottom: 1.6em; right: 2em">
+                </div>
+                <div></div>
+                <div class="notes">
+                        * there was maintenance occurring on the demineralizer<br>
+                        * during the maintenance they caused a problem in the condensate pump... and it failed <br>
+                        * there were 3 auxillary pumps... all down for maintenance <br>
+                        * this caused the main feedwater pump to cut out <br>
+                        * the emergency systems kicked in as they should, opening the relief valve <br>
+                        * the automated systems sent the signal to close the valve... but it was stuck <br>
+                        * key: the automation reported that it sent the signal, not that it confirmed the valve closed <br>
+
+                </div>
+            </div>
+
+            <div id="3mile_problem2" class="redhatBackgroundSettings step slide"  data-x="5000" data-y="0" data-z="0">
+                <div>
+                    <img src="images/3_mile_island_control_panel.png" style="height: 115%; width: 116%; position: relative; bottom: 1.6em; right: 2em">
+                </div>
+                <div class="notes">
+                      * the emergency pumps activated <br>
+                      * burried in this control panel was the indication that <b>no water</b> was entering the system <br>
+                      * There was emergency cooling, but it was turned off to prevent flooding (b/c they thought they had water from the backup pump)... <br>
+                      * this combine with the valve being stuck open lead to loss of cooling <br>
+                      * there were so many alerts firing that critical ones were missed <br>
+                      * moral: they alerted on absolutely everything and because of that, it was too hard to find the important alerts
+                </div>
+            </div>
+
+            <div id="before_alerts1" class="redhatBackgroundSettings step slide"  data-x="4000" data-y="0" data-z="0">
+                <div class="topCentre whiteText">Before You Adjust Your Alerts...</div>
+                <div class="notes">
+                        * Many orgs lose sight of why they have alerts <br>
+                        * the surface answer is to highlight problems <br>
+                        * this will lead to alert creep like 3 mile island <br>
+                </div>
+            </div>
+
+            <div id="user_problem1" class="redhatBackgroundSettings step slide"  data-x="4000" data-y="750" data-z="0">
+                <div class="topCentre whiteText">User Facing Problems...</div>
+                <div>
+                    <img src="images/user_problems.jpg" style="height: 80%; width: 80%; position: relative; left: 3em">
+                </div>
+                <div></div>
+                <div class="notes">
+                    * You need to know when your users have a problem<br>
+                    * You need to establish user-based SLOs <br>
+                </div>
+            </div>
+
+            <div id="error_burn" class="redhatBackgroundSettings step slide" data-x="4000" data-y="1500" data-z="0">
+                <div>
+                    <img src="images/error_budget_burn.jpg" style="height: 115%; width: 116%; position: relative;bottom: 1.5em; right: 2em">
+                </div>
+
+
+                <div class="notes">
+                    * SLOs need to be tied to an error budget <br>
+                    * You want to trigger an alert before you breach your error budget <br>
+                    * You need to track burn rate<br>
+                </div>
+            </div>
+
+            <div id="things_to_thing_about" class="redhatBackgroundSettings step slide" data-x="5000" data-y="1500" data-z="0">
+                <div class="topCentre whiteText">
+                       Things To Think About...
+                </div>
+                <div>
+                    <img src="images/Think_about.jpg" style="height: 80%; width: 80%; position: relative; left: 3em">
+                </div>
+                <div class="notes">
+                    * good at <br>
+                    * struggle <br>
+                    * hold me back
+                </div>
+            </div>
+
+            <div id="white_vs_blackbox" class="redhatBackgroundSettings textTransitions step slide" data-x="6000" data-y="1500" data-z="0">
+                <div class="topCentre whiteText">
+                       1. Types Of Alerts
+                </div>
+                <div>
+                    <img src="images/blackbox_vs_whitebox.png" style="height: 50%; width: 80%; position: relative; left: 3em; top: 2em">
+                </div>
+                <div class="notes">
+                    * blackbox are happening right now... traditional alerts <br>
+                    * whitebox are predictive... burn rate, low/high water marks etc <br>
+                    * mature orgs have significantly more white box <br>
+                    * these alerts are more complex <br>
+                    * instead of putting effort, orgs will swamp their systems and people with traditional black box alerts
+                </div>
+            </div>
+
+            <div id="human_cost" class="redhatBackgroundSettings step slide" data-x="6000" data-y="2250" data-z="0">
+                <div class="topCentre whiteText">
+                    2. Human Costs
+                </div>
+                    <ul class="whiteText" style="list-style-type:circle; position: relative; top: 2em">
+                        <li class="substep bulletFont">Alerts trigger context switching</li>
+                        <li class="substep bulletFont">We have finite 'emergency' response times</li>
+                        <li class="substep bulletFont">People Will Stop Caring</li>
+                        <li class="substep bulletFont">You should limit pageable events to 1-2 per 12 hours (maximum!)</li>
+                    </ul>
+            </div>
+
+            <div id="infra_considerations" class="redhatBackgroundSettings step slide"  data-x="6000" data-y="3000" data-z="0">
+                <div class="topCentre whiteText">
+                    3a. Infra Considerations
+                </div>
+                <div>
+                    <img src="images/computer_infra.jpg" style="height: 70%; width: 100%; position: relative; left: 0.2em; top: 1em">
+                </div>
+                <div class="notes">
+                    * What's the key hardware <br>
+                    * Do we need to care about network? <br>
+                    * Do we need to care about storage? <br>
+                    * Do we need to care about the vm infrastructure and layout? <br>
+                </div>
+            </div>
+
+            <div id="app_considerations" class="redhatBackgroundSettings step slide" data-x="5000" data-y="3000" data-z="0">
+                <div class="topCentre whiteText">
+                    3b. Critical App Considerations
+                </div>
+                <div>
+                    <img src="images/app_pulse.jpg" style="height: 70%; width: 80%; position: relative; left: 3em; top: 0.4em">
+                </div>
+                <div class="notes">
+                    * do we have <u>current</u> performance profiles <br>
+                    * Are we tracking performance deltas? <br>
+                    * Do we have queues or caches? <br>
+                    * How is the api responding? <br>
+                </div>
+            </div>
+
+            <div id="customer_impact" class="redhatBackgroundSettings step slide" data-x="4000" data-y="3000" data-z="0">
+                <div class="topCentre whiteText">
+                    3c. End User Impact
+                </div>
+                <div>
+                    <img src="images/end_user_impact.jpg" style="height: 70%; width: 80%; position: relative; left: 3em; top: 1em">
+                </div>
+                <div class="notes">
+                    * what impacts our users the most <br>
+                    * are user experiences correlated to actual real end user metrics <br>
+                    * can we validate this from multiple points of measurement <br>
+                    * What expectations do users have of your service<br>
+                </div>
+            </div>
+    
+
+            <div id="business_impact" class="redhatBackgroundSettings step slide" data-x="7500" data-y="3000" data-z="0">
+                <div class="topCentre whiteText">
+                    3d. Business Impact
+                </div>
+                <div>
+                    <img src="images/money-bag-cartoon.png" style="height: 70%; width: 70%; position: relative; left: 4em; top: 1em">
+                </div>
+                <div class="notes">
+                    * tie transactions to business outcomes <br>
+                    * how do these outcomes correspond to performance? <br>
+                    * what metrics are used to represent those outcomes? <br>
+                    * Businesses don't care about how many 9s, they care about meeting their goals<br>
+                </div>
+            </div>
+
+            <div id="patterns" class="redhatBackgroundSettings step slide" data-x="8500" data-y="3000" data-z="0">
+                <div class="topCentre whiteText">
+                    4. Follow Patterns Not Metrics
+                </div>
+                <div>
+                    <img src="images/trends.jpg" style="height: 70%; width: 70%; position: relative; left: 4em; ">
+                </div>
+                <div class="notes">
+                    * you can elminate a lot of black box alerts by focusing on trends <br>
+                    * trends allow for some level of prediction <br>
+                    * multiple trends are ideal for dependency alerts <br>
+                </div>
+            </div>
+
+            <div id="how_to_receive" class="redhatBackgroundSettings step slide"  data-x="9500" data-y="3000" data-z="0">
+                <div class="topCentre whiteText">
+                    5. Where To Send Alerts
+                </div>
+                <div>
+                    <img src="images/too_many_alerts.png" style="height: 70%; width: 70%; position: relative; left: 4em; top: 1em ">
+                </div>
+                <div class="notes">
+                    * think about splitting alerts into different channels <br>
+                    * be intentional about how people see information <br>
+                    * ensure that alerts do not end up in multiple channels <br>
+                </div>
+            </div>
+
+            <div id="slo_alerts1" class="redhatBackgroundSettings step slide" data-x="7500" data-y="2250" data-z="0" >
+                <div class="centre whiteText">SLO Alerting</div>
+                
+            </div>
+            
+            <div id="slo_alerts2" class="redhatBackgroundSettings step slide"  data-x="7500" data-y="1500" data-z="0">
+                <div class="topCentre whiteText">
+                    The Way It Was...
+                </div>
+                <div>
+                    <img src="images/the_way_it_was.jpg" style="height: 70%; width: 70%; position: relative; left: 4em; top: 1em ">
+                </div>
+                <div class="notes">
+                    * We used to track things in uptime <br>
+                    * this was a source of pride <br>
+                    * All we did was move the focus from uptime to the number of 9s in our availability <br>
+                    * there is no inherent value in a system running if the business isn't succeeding
+                </div>
+            </div>
+
+            <div id="slow_alerts3" class="redhatBackgroundSettings step slide" data-x="8500" data-y="1500" data-z="0">
+                <div class="topCentre whiteText">
+                    Business Value & Downtime...
+                </div>
+                <div>
+                    <img src="images/Downtime-ahead.jpg" style="height: 70%; width: 70%; position: relative; left: 4em;  ">
+                </div>
+                <div class="notes">
+                    * Create alerts based on business value <br>
+                    * we need to be aware of the possibility of downtime <br>
+                    * don't make so many alerts you get investigation paralysis <br>
+                    * the less confident you are, the more alerts you will hoard <br>
+                    * start small, really ensure you have gotten it right, then expand
+                </div>
+            </div>
+
+            <div id="slo_alerts4" class="redhatBackgroundSettings step slide"  data-x="9500" data-y="1500" data-z="0">
+                <div class="topCentre whiteText">
+                    Tracking Upstream...
+                </div>
+                <div>
+                    <img src="images/Upstream.png" style="height: 70%; width: 70%; position: relative; left: 4em; top: 1em ">
+                </div>
+                <div class="notes">
+                    * SLOs should be picked based on helping you understand impact to users <br>
+                    * as part of that you need to track upstream <br>
+                    * If you base your product or service on a cloud offering you still need to track their status <br>
+                    * you can't do anything to resolve their issues <br>
+                    * you need to know whether it was their failure, or the upstream and they still need to be able to report the proper cause of the service interruption
+                </div>
+            </div>
+
+            <div id="good_alert_title" class="redhatBackgroundSettings step slide"  data-x="7500" data-y="750" data-z="0">
+                <div class="centre whiteText">What Makes Up A Good Alert?</div>
+            </div>
+
+
+            <div id="take_action" class="redhatBackgroundSettings step slide" data-x="7500" data-y="0" data-z="0">
+                <div class="topCentre whiteText">Make Them Actionable...
+                </div>
+                <div>
+                    <img src="images/take-action.png" style="height: 70%; width: 60%; position: relative; left: 5em; top: 1em ">
+                </div>
+                <div class="notes">
+                    * i've mentioned it earlier... <br>
+                    * If you are creating an alert, the implication is that someone needs to take some action <br>
+                    * without clear action, an alert ends up as an investigation <br>
+                    * this can be a big waste of time and energy <br>
+                    * useless alerts will cause your responses to alerts suffer across the board
+                </div>
+            </div>
+
+            <div id="std_deviation" class="redhatBackgroundSettings step slide"  data-x="8500" data-y="0" data-z="0">
+                <div class="topCentre whiteText">Alert Based On Deviations... </div>
+
+                <div>
+                    <img src="images/standard_deviation.png" style="height: 70%; width: 95%; position:relative; top: 1em; left: 1em">
+                </div>
+                <div class="notes">
+                    * does it really matter if your cpu hits 75%? <br>
+                    * is it a spike?  <br>
+                    * is the spike outside of the normal operations of your service? <br>
+                    * The only way to know is to track the std deviations over time <br>
+                    * Std deviations tell you whether a dip or surge in a service is significant <br>
+                    * You need to decide how many std deviations above normal you will alert on <br>
+                    * You likely want 3 or more std deviations, but its highly dependent on your environment <br>
+                    * Use historical data to determine acceptable std deviations 
+                </div>
+            </div>
+
+            <div id="unneeded_alerts" class="redhatBackgroundSettings step slide"  data-x="9500" data-y="0" data-z="0">
+                <div class="topCentre whiteText">Remove Unneeded Alerts... </div>
+
+                <div>
+                    <img src="images/pruning.jpg" style="height: 70%; width: 95%; position:relative; top: 1em; left: 1em">
+                </div>
+                <div class="notes">
+                    * if an alert recurring and not breaking anything, remove it <br>
+                    * Once you start working with advanced alerting, inferior alerts will manifest  <br>
+                    * remove ask quickly as possible <br>
+                </div>
+            </div>
+
+            <div id="remove_low" class="redhatBackgroundSettings step slide" data-x="11000" data-y="0" data-z="0">
+                <div class="topCentre whiteText">Remove Low Priority Alerts... </div>
+
+                <div>
+                    <img src="images/low_priority.jpg" style="height: 60%; width: 50%; position:relative; top: 1em; left: 6em">
+                </div>
+                <div class="notes">
+                    * similar to unneeded alerts, low priority alerts should be pruned <br>
+                    * You may want to create backlog items in a sprint based on low priority items  <br>
+                    * they should not draw people's attention beyond creating backlog tickets <br>
+                </div>
+                
+            </div>
+
+            <div id="user_perspective" class="redhatBackgroundSettings step slide" data-x="12000" data-y="0" data-z="0">
+                <div class="topCentre whiteText">Alert From User's Perspective</div>
+                <div>
+                    <img src="images/users_perspective.png" style="height: 60%; width: 50%; position:relative; top: 1em; left: 6em">
+                </div>
+                <div class="notes">
+                    * Alerting from within the software stack is only so useful. <br>
+                    *  things should be measured from outside of the stack so that as much of the user's journey as possible is captured  <br>
+                    * Even if your 'user' is a downstream application, they probably do not live on the same host <br>
+                    * you need to be able to cross reference what the users report with what the systems are reporting
+                </div>
+            </div>
+
+            <div id="dependency_trigger" class="redhatBackgroundSettings step slide" data-x="13000" data-y="0" data-z="0">
+                <div class="topCentre whiteText">Alert With Dependency Triggers</div>
+                <div>
+                    <img src="images/Interdependence.png" style="height: 60%; width: 50%; position:relative; top: 1em; left: 6em">
+                </div>
+                <div class="notes">
+                    * this is sometimes called grouping <br>
+                    *  given enough experience, start creating alerts based on a series of triggers  <br>
+                    * Instead of a series CPU, memory and disk I/O alerts on an API server, you could most likely group these together <br>
+                    * fire off an alert of impending API errors or slow downs based on past experiences <br>
+                    * using indepth knowledge of your service combine with previous experience will allow you to craft more meaningful alerts
+                </div>
+            </div>
+
+            <div id="juan_approach" class="redhatBackgroundSettings step slide" data-x="13000" data-y="750" data-z="0">
+                <div class="topCentre whiteText">Google's JUAN Approach</div>
+                <ul class="whiteText" style="list-style-type: circle; position: relative; top: 2em">
+                    <li class="substep bulletFont"><b style="color:aquamarine"> J</b>udgment - requires thinking regarding how to solve it </li>
+                    <li class="substep bulletFont"><b style="color:aquamarine">U</b>rgent - consequences are imminent</li>
+                    <li class="substep bulletFont"><b style="color:aquamarine">A</b>ctionable - You need to be able to do something</li>
+                    <li class="substep bulletFont"><b style="color:aquamarine">N</b>ecessary - The alert needs to impact users</li>
+                </ul>
+                <div class="notes">
+                    <img src="images/juan_table.png" style="height: 40%; width: 80%; position:relative; ">
+                    * if using autoscaling, you should not alert on cpu and memory thresholds (see std deviations for caveats) <br>
+                    * still need <i>cliff</i> alerts before you run completely out of capacity  <br>
+                    * Cliff alerts should be very rare <br>
+                </div>
+            </div>
+
+
+            <div id="alert_look_title" class="redhatBackgroundSettings step slide" data-x="13000" data-y="1500" data-z="0" >
+                <div class="centre whiteText" style="position:relative;  top: 3em;"> Contents Of An Alert</div>
+                
+            </div>
+
+
+            <div id="desc_and_summary" class="redhatBackgroundSettings step slide" data-x="12000" data-y="1500" data-z="0" >
+                <div class="topCentre whiteText">Description and Summary  </div>
+                <img src="images/etcd_description.png" style="height: 50%; width: 90%; position: relative; top: 2em; left: 1em">
+
+                <div class="notes">
+                    * both description and summary should be included in alert <br>
+                    * description details the situation and potential impacts <br>
+                    * May even provide info about what impact it had in the past<br>
+                    * descriptions have enough info to understand what the problem is, the possible ramifications of the problem and potential avenues of investigation. <br>
+                    * Summaries are short and sweet, two sentences max. Meant for experienced team members to know what's going on at a glance <br>
+                </div>
+            </div>
+
+
+            <div id="environment_project" class="redhatBackgroundSettings step slide" data-x="12500" data-y="2250" data-z="0" >
+                <div class="topCentre whiteText">Project & Environment </div>
+                <ul class="whiteText" style="list-style-type: circle; position: relative; top: 2em">
+                    <li class="substep bulletFont"><b style="color:aquamarine">You need to know which environment at a glance </li>
+                    <li class="substep bulletFont"><b style="color:green">Ideally, project is clearly identified</li>
+                    <li class="substep bulletFont"><b style="color:rgb(50, 244, 95)">Including both saves a lot of time</li>
+                    <li class="substep bulletFont"><b style="color:rgb(178, 255, 229)">Very useful for new team members</li>
+                </ul>
+
+                <div class="notes">
+                    (there are 4 bullets on this slide)
+                    * ID the environment<br>
+                    * ID Project <br>
+                    * Often one or both of this information is missing from an alert <br>
+                    * having both pieces saves fumbling around looking for the info <br>
+                    * Its very helpful to people not very familiar with the product or service <br>
+                </div>
+            </div>
+
+            <div id="which_metric" class="redhatBackgroundSettings step slide" data-x="13000" data-y="3000" data-z="0" >
+                <div class="topCentre whiteText">What Metric Triggered Alert </div>
+                <img src="images/which_metricsmetrics.png" style="height: 75%; width: 90%; position: relative; bottom: 0.6em; left: 1em">
+
+                <div class="notes">
+                    * sticking with the ETCD example from earlier... <br>
+                    * assume you created an alert that used PING, OC GET PODS and ETCD ENDPOINT HEALTH <br>
+                    * you need to clearly state this in the alert <br>
+                    * if a check is ambiguous, you need to explain what the metric means <br>
+                </div>
+            </div>
+
+            <div id="condition_and_threshold" class="redhatBackgroundSettings step slide" data-x="11000" data-y="750" data-z="0" >
+                <div class="topCentre whiteText">Conditions & Thresholds</div>
+                <div>
+                    <img src="images/threshold-alerts.jpg" style="height: 60%; width: 80%; position: relative; left: 3em; top: 2em">
+                </div>
+                <div class="notes">
+                    * The current condition of the service needs to be clearly outlined <br>
+                    * thresholds should also be included <br>
+                    * that way you know how severe the current condition is relative to the trigger <br>
+                    * the threshold should be written in plain language so there is no guess work involved in understanding the alert <br>
+                </div>
+            </div>
+
+            <div id="documentation" class="redhatBackgroundSettings step slide" data-x="11000" data-y="1500" data-z="0" >
+                <div class="topCentre whiteText">Doc & Runbook Links</div>
+                <div>
+                    <img src="images/documentation.png" style="height: 60%; width: 80%; position: relative; left: 3em; top: 2em">
+                </div>
+                <div class="notes">
+                    * Make the initial responders's life easier by including documentation relevant to the alert <br>
+                    * at a minimum you should have basic instruction how to troubleshoot <br>
+                    * this section of the alert is updated semi-frequently to include the last 2 or 3 incidences where this alert (and associated resolutions) have been documented. <br>
+                    * past incident reports are not always needed, but it sure saves time when you do... <br>
+                </div>
+            </div>
+
+            <div id="escalation_sme" class="redhatBackgroundSettings step slide" data-x="11000" data-y="2250" data-z="0" >
+                <div class="topCentre whiteText">Escalations, SMEs & Timelines    </div>
+                <img src="images/escalation.jpg" style="height: 65%; width: 80%; position: relative; top: 0.4em; left: 3em">
+
+                <div class="notes">
+                    * often neglected but incredibly useful when fighting fires, is noting both an escalation path as well as any SMEs <br>
+                    * not every event will warrant calling an SME <br>
+                    * this section is incredibly useful, especially for those non-technical users who are attempting to help coordinate a response <br>
+                    * It could be a link to a living document where the document is updated<br>
+                    * It could also be that the alert itself is generated by a template <br>
+                    * it is also possible to statically set this information (most commonly done in the form of a pager number, email, chat group etc) <br>
+                    * If you have an escalation path available to your on-call staff, you should set a time-box for working on an issue <br>
+                    * Good: unified response plan provided to management <br>
+                    * Good: everyone understands who gets called and when <br>
+                    * Good: resources understand they are not alone dealing with a problem <br>
+                    * These need to be customized based on the severity of the alert
+                </div>
+            </div>
+
+            <div id="next_steps" class="redhatBackgroundSettings step slide" data-x="11000" data-y="3000" data-z="0" >
+                <div class="topCentre whiteText"> Next Steps </div>
+                <img src="images/Next-Steps.jpg" style="height: 65%; width: 80%; position: relative; top: 1.6em; left: 3em">
+
+                <div class="notes">
+                    * There may be specific next steps that are required from a process perspective <br>
+                    * such as acknowledging the alert, filing some paperwork, starting timers, sending out communications etc <br>
+                    * While not always necessary, it is a good habit to get into. 
+                </div>
+            </div>
+            
+            <div id="wrapup" class="step " data-x="-11000" data-y="3000" data-z="0" >
+                
+                <img src="images/what_did_you_learn.jpg" style="height: 65%; width: 80%; position: relative; ">
+
+                <div class="notes">
+                    * Focus on the user <br>
+                    * work towards alerting on deviations <br>
+                    * tie alerts to SLOs which have business value<br>
+                    * review the contents of alerts often <br>
+                    * don't hoard alerts! 
+                </div>
+            </div>
+            <div id="thankyou" class="step " data-x="-14000" data-y="3000" data-z="0" >
+                
+                <img src="images/thank_you.jpg" style="height: 65%; width: 80%; position: relative; ">
+            </div>
+
+        <!-- These load the actual JS. In this case a relative path to a js folder-->
+        <script src="js/impress.js"></script>
+        <script>impress().init();</script>
+    </div>
+
+
+</body></html>

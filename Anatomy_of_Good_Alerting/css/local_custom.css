@@ -1,0 +1,165 @@
+/* These are my local CSS styles */
+
+.topCentre {
+    position: relative;
+    top: -35px; 
+    align-items: center; 
+    text-align: center; 
+    font-size: 2.05em
+}
+
+.whiteText{
+    color: rgb(255, 255, 255);
+}
+
+.redText{
+    color: red
+}
+
+.blackText{
+    color: black
+}
+
+.bulletFont{
+    font-size: 32px
+}
+
+.commonBackgroundSettings{
+    height: 700px; 
+    width: 935px;
+}
+
+.redhatBackgroundSettings{
+    background-image: url("../images/RedHat_background_scaled.png");
+    height: 675px; 
+    width: 905px;
+}
+
+.debianBackgroundSettings{
+    background-image: url("../images/Debian_background.png"); 
+
+}
+
+.fedoraBackgroundSettings{
+    background-image: url("../images/Fedora_background.png"); 
+}
+
+.archBackgroundSettings{
+    background-image: url("../images/Arch_background.png"); 
+}
+
+.gentooBackgroundSettings{
+    background-image: url("../images/Gentoo_background_1.png");
+}
+
+.centre{
+    position: relative;
+    top: 150px; 
+    align-items: center; 
+    text-align: center; 
+    font-size: 48pt 
+}
+
+
+.arrowRightIndentation {
+    height: 40px; 
+    width: 45px;
+}
+
+/* .textTransitions { width: 500px } */
+
+/*
+    ... so we define display to `inline-block` to enable transforms and
+    transition duration to 0.5s ...
+*/
+.textTransitions {
+    display: inline-block;
+    -webkit-transition: 0.5s;
+    -moz-transition:    0.5s;
+    -ms-transition:     0.5s;
+    -o-transition:      0.5s;
+    transition:         0.5s;
+}
+
+/*
+    ... and we want 'positioning` word to move up a bit when the step gets
+    `present` class ...
+*/
+.textTransitions.present .positioning {
+    -webkit-transform: translateY(-10px);
+    -moz-transform:    translateY(-10px);
+    -ms-transform:     translateY(-10px);
+    -o-transform:      translateY(-10px);
+    transform:         translateY(-10px);
+}
+
+/*
+    ... 'rotating' to rotate a quarter of a second later ...
+*/
+.textTransitions.present .rotating {
+    -webkit-transform: rotate(-10deg);
+    -moz-transform:    rotate(-10deg);
+    -ms-transform:     rotate(-10deg);
+    -o-transform:      rotate(-10deg);
+    transform:         rotate(-10deg);
+
+    -webkit-transition-delay: 0.25s;
+    -moz-transition-delay:    0.25s;
+    -ms-transition-delay:     0.25s;
+    -o-transition-delay:      0.25s;
+    transition-delay:         0.25s;
+}
+
+/*
+    ... and 'scaling' to scale down after another quarter of a second.
+*/
+.textTransitions.present .scalingUp {
+    -webkit-transform: scale(5);
+    -moz-transform:    scale(5);
+    -ms-transform:     scale(5);
+    -o-transform:      scale(5);
+    transform:         scale(5);
+
+    -webkit-transition-delay: 2.7s;
+    -moz-transition-delay:    2.7s;
+    -ms-transition-delay:     2.7s;
+    -o-transition-delay:      2.7s;
+    transition-delay:         2.7s;
+}
+
+.textTransitions.present .scalingUp4x3 {
+    -webkit-transform: scale(3) translateX(30px);
+    -moz-transform:    scale(3) translateX(30px);
+    -ms-transform:     scale(3) translateX(30px);
+    -o-transform:      scale(3) translateX(30px);
+    transform:         scale(3) translateX(30px);
+
+    -webkit-transition-delay: 2.7s;
+    -moz-transition-delay:    2.7s;
+    -ms-transition-delay:     2.7s;
+    -o-transition-delay:      2.7s;
+    transition-delay:         2.7s;
+
+}
+
+.textTransitions.present .scalingDown {
+    -webkit-transform: scale(0);
+    -moz-transform:    scale(0);
+    -ms-transform:     scale(0);
+    -o-transform:      scale(0);
+    -o-transform:      scale(0);
+    transform:         scale(0);
+
+    -webkit-transition-delay: 2.7s;
+    -moz-transition-delay:    2.7s;
+    -ms-transition-delay:     2.7s;
+    -o-transition-delay:      2.7s;
+    transition-delay:         2.7s;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 10fr 1fr;
+    grid-auto-rows: minmax(600px, auto);
+    justify-items: left;
+}
