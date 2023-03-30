@@ -48,22 +48,29 @@
                     <span style="font-size: 16pt;" >Mar 2023</span>
                 </p>
                 <div class="notes">
-
+                    * we are going to talk about 4 things that alerts should be <br>
+                    * we are going to walk through how humans react to stress <br>
+                    * we are also going to talk about how the industry responds to adverse events <br>
+                    * we are going to talk about considerations before creating an alert <br>
+                    * finally we are going to cover what goes in the body of the alert
                 </div>
             </div>
             
            <!-- The overview should be far enough out for the perspective to show the slides aranged in an acronym-->
            <div id="overview" class="step" data-x="8000" data-y="3000" data-z="6000" data-scale="17">
-            * Alerting is hard. <br>
-            * everyone thinks they can do alerting <br>
-            * that they have a solid basis <br>
-            * usually a company probably has a ton of alerts... no value <br>
-            * In order to be truly successful, alerts need to have a few traits.
-                USERS<br>
-                Judgment<br>
-                Urgent<br>
-                Actionable<br>
-                Necessary 
+                <div class="notes">
+                    * Alerting is hard. <br>
+                    * everyone thinks they can do alerting <br>
+                    * that they have a solid basis <br>
+                    * usually a company probably has a ton of alerts... no value <br>
+                    * In order to be truly successful, alerts need to have a few traits.
+                        USERS<br>
+                        Judgment<br>
+                        Urgent<br>
+                        Actionable<br>
+                        Necessary 
+                </div>
+            
             </div>
 
             <div id="first_actionable" class="redhatBackgroundSettings step slide" data-x="0" data-y="0" data-z="0">
@@ -185,7 +192,8 @@
                     * your staff will absolutely move on <br>
                     * This leaves a whole in the rotation <br>
                     * a hefty training bill to get someone new up to speed <br>
-                    * No one wants to exist in an environment where they feel the only option for relief is to quit.
+                    * No one wants to exist in an environment where they feel the only option for relief is to quit. <br>
+                    this is the last slide about reaction by people... next how the industry responds
                 </div>
             </div>
 
@@ -218,7 +226,7 @@
 
             <div id="3mile_problem" class="redhatBackgroundSettings step slide"  data-x="6000" data-y="0" data-z="0">
                 <div>
-                    <img src="images/3_mile_island_reactor_with_arrows.png" style="height: 115%; width: 116%; position: relative; bottom: 1.6em; right: 2em">
+                    <img src="images/3_mile_island_reactor_with_arrows.png" style="height: 80%; width: 116%; position: relative; top: 1.6em; right: 2em">
                 </div>
                 <div></div>
                 <div class="notes">
@@ -250,6 +258,7 @@
             <div id="before_alerts1" class="redhatBackgroundSettings step slide"  data-x="4000" data-y="0" data-z="0">
                 <div class="topCentre whiteText">Before You Adjust Your Alerts...</div>
                 <div class="notes">
+                        (there is nothing further on this slide, its just the title)
                         * Many orgs lose sight of why they have alerts <br>
                         * the surface answer is to highlight problems <br>
                         * this will lead to alert creep like 3 mile island <br>
@@ -289,9 +298,7 @@
                     <img src="images/Think_about.jpg" style="height: 80%; width: 80%; position: relative; left: 3em">
                 </div>
                 <div class="notes">
-                    * good at <br>
-                    * struggle <br>
-                    * hold me back
+                    This is a title/filler page to signal a transition
                 </div>
             </div>
 
@@ -321,6 +328,12 @@
                         <li class="substep bulletFont">People Will Stop Caring</li>
                         <li class="substep bulletFont">You should limit pageable events to 1-2 per 12 hours (maximum!)</li>
                     </ul>
+                <div class="notes">
+                * context switching <br>
+                * finite emergency response <br>
+                * stop caring <br>
+                * limit events to 1-2/12 hrs
+                </div>
             </div>
 
             <div id="infra_considerations" class="redhatBackgroundSettings step slide"  data-x="6000" data-y="3000" data-z="0">
@@ -386,7 +399,7 @@
 
             <div id="patterns" class="redhatBackgroundSettings step slide" data-x="8500" data-y="3000" data-z="0">
                 <div class="topCentre whiteText">
-                    4. Follow Patterns Not Metrics
+                    4. Focus On Patterns Not Metrics
                 </div>
                 <div>
                     <img src="images/trends.jpg" style="height: 70%; width: 70%; position: relative; left: 4em; ">
@@ -460,7 +473,7 @@
                     * as part of that you need to track upstream <br>
                     * If you base your product or service on a cloud offering you still need to track their status <br>
                     * you can't do anything to resolve their issues <br>
-                    * you need to know whether it was their failure, or the upstream and they still need to be able to report the proper cause of the service interruption
+                    * you need to know whether it was your failure, or the upstream and you still need to be able to report the proper cause of the service interruption
                 </div>
             </div>
 
