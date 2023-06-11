@@ -4,8 +4,8 @@
 export CONTAINER_ROOT_FOLDER=/container_practice
 mkdir -p ${CONTAINER_ROOT_FOLDER}/fakeroot
 cd ${CONTAINER_ROOT_FOLDER}
-wget https://dl-cdn.alpinelinux.org/alpine/v3.17/releases/x86_64/alpine-minirootfs-20221110-x86_64.tar.gz
-tar xvf alpine-minirootfs-20221110-x86_64.tar.gz -C fakeroot
+wget https://dl-cdn.alpinelinux.org/alpine/v3.17/releases/x86_64/alpine-minirootfs-3.17.0-x86_64.tar.gz
+tar xvf alpine-minirootfs-3.17.0-x86_64.tar.gz -C fakeroot
 chown container-user. -R ${CONTAINER_ROOT_FOLDER}/fakeroot
 
 
