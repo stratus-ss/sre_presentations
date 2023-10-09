@@ -1,0 +1,148 @@
+/* These are my local CSS styles */
+
+.topCentre {
+    position: relative;
+    top: -35px; 
+    align-items: center; 
+    text-align: center; 
+    font-size: 2.05em
+}
+
+.centre {
+    position: relative;
+    top: 300px; 
+    align-items: center; 
+    text-align: center; 
+    font-size: 3.05em
+}
+
+
+.whiteText{
+    color: rgb(255, 255, 255);
+}
+
+.blackText{
+    position: relative;
+    top: 1em; 
+    left: 1em;
+    align-items: center; 
+    text-align: center; 
+    color: black;
+    font-size: 3em
+
+}
+
+.redText{
+    color: red
+}
+
+.bulletFont{
+    font-size: 1.25em
+}
+
+.urlFont {
+    color: blue;
+    font-size: 0.7em;
+}
+
+.backgroundSettings{
+    background-image: url("../backgrounds/dark_blue_with_cracks.jpg");
+    height: 900px; 
+    width: 1200px;
+}
+
+.rippleBackgroundSettings{
+    background-image: url("../backgrounds/dark_blue_ripple.jpeg");
+    height: 900px; 
+    width: 1200px;
+}
+.squaresBackgroundSettings{
+    background-image: url("../backgrounds/minimalist-black-neon-squares-background.jpg");
+    height: 900px; 
+    width: 1200px;
+
+}
+
+.purpleBackgroundSettings{
+    background-image: url("../backgrounds/purple_to_blue_background_1200x675.jpg");
+    height: 900px; 
+    width: 1200px;
+}
+
+
+.sunBackgroundSettings{
+    background-image: url("../backgrounds/sun_in_water_1200x900.jpg");
+    height: 900px; 
+    width: 1200px;
+}
+
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 10fr 1fr;
+    grid-auto-rows: minmax(600px, auto);
+    justify-items: left;
+}
+
+#testing b {
+    display: inline-block;
+    -webkit-transition: 5s;
+    -moz-transition:    5s;
+    -ms-transition:     5s;
+    -o-transition:      5s;
+    transition:         5s;
+}
+
+#testing.present .positioning {
+    -webkit-transform: translateY(-10px);
+    -moz-transform:    translateY(-10px);
+    -ms-transform:     translateY(-10px);
+    -o-transform:      translateY(-10px);
+    transform:         translateY(-10px);
+}
+
+#testing.present .scaling {
+    -webkit-transform: scale(1.3);
+    -moz-transform:    scale(1.3);
+    -ms-transform:     scale(1.3);
+    -o-transform:      scale(1.3);
+    transform:         scale(1.3);
+
+    -webkit-transition-delay: 0.01s;
+    -moz-transition-delay:    0.01s;
+    -ms-transition-delay:     0.01s;
+    -o-transition-delay:      0.01s;
+    transition-delay:         0.01s;
+
+}
+
+#testing.future .scaling {
+    -webkit-transform: scale(0.5);
+    -moz-transform:    scale(0.5);
+    -ms-transform:     scale(0.5);
+    -o-transform:      scale(0.5);
+    transform:         scale(0.5);
+
+    -webkit-transition-delay: 0.2s;
+    -moz-transition-delay:    0.2s;
+    -ms-transition-delay:     0.2s;
+    -o-transition-delay:      0.2s;
+    transition-delay:         0.2s;
+}
+
+
+#testing.past .scaling {
+    -webkit-transform: scale(0.5);
+    -moz-transform:    scale(0.5);
+    -ms-transform:     scale(0.5);
+    -o-transform:      scale(0.5);
+    transform:         scale(0.5);
+
+    -webkit-transition-delay: 0.2s;
+    -moz-transition-delay:    0.2s;
+    -ms-transition-delay:     0.2s;
+    -o-transition-delay:      0.2s;
+    transition-delay:         0.2s;
+
+}
+
