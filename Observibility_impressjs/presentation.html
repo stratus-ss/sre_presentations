@@ -28,8 +28,39 @@
         </div>
 
         <div id="impress" style="perspective: 1000px;">
+            <div id="intro" class="step slide" data-x="-15000" data-y="5000" data-rotate="150" style="background-color: rgb(216, 216, 216);">
+                    
+                <h1 style="text-align: center;" data-mce-style="text-align: center;">&nbsp;<br></h1><h1 style="text-align: center;" data-mce-style="text-align: center;">&nbsp;<br></h1><h1 style="text-align: center;" data-mce-style="text-align: center;">
+                    <span style="font-size: 36pt; color:rgb(7, 74, 110)" data-mce-style="font-size: 36pt;">  
+                        <span style="color: rgb(153, 51, 0);" data-mce-style="color: #993300;">What</span>
+                        Is
+                        <span style="color: rgb(153, 51, 0);" data-mce-style="color: #993300;">Observability</span>
+                    </span><br>
+                </h1>
+                <p style="text-align: left;" >&nbsp;<br><br><br><br></p>
+                <p style="text-align: left;" >
+                    <span style="font-size: 16pt;" >Steve Ovens <br></span>
+                    <span style="font-size: 16pt;" >Red Hat Architect <br></span>
+                    <span style="font-size: 16pt;" >June 2024</span>
+                </p>
+            </div>
             
-            <div id="problem_statement" class="darkWithSpotsSettings step slide" data-x="0" data-y="0" data-z="0">
+            <div id="story_time" class="step " data-x="500" data-y="500" data-z="6000">
+                <img src="images/KM_StoryTime.jpg" style="height: 180%; width: 180%;position: relative; right: 7em" >  
+                <div class="notes">
+                    <p>There was a company, let's call them CodeCraft, their flagship project "Harmony" started experiencing intermittent failures</p>
+                    <p>The problem was a gremlin, seemingly appearing and disappearing at random. The applicate was some complicated web based tracking tool</p>
+                    <p>Users can track time, upload files and do long range planning</p>
+                    <p>The problems seemed unrelated, a failed upload here, a bad page refresh there</p>
+                    <p>Errors were popping up like digital fireworks!</p>
+                    <p>The checked connections, restarted services, all the regular troubleshooting but they couldnt find the bug</p>
+                    <p>As the hours rolled by and tempers flared (amplified by lack of a clear culprit) someone complains aloud about lack of a way to track down this problem</p>
+                    <p>Eventually, a clue is found in an obscure server, but its like tracking an error blindfolded</p>
+                </div>
+            </div>
+
+            
+            <div id="problem_statement" class="darkWithSpotsSettings step slide" data-x="500" data-y="500" data-z="0">
                 <div class="topCentre whiteText"><b>What Is The Problem?</b></div>
                 <div>
                     <img src="images/question_marks.png" style="height: 80%; width: 60%; position: relative; left: 6em; top: 1em" >                
@@ -143,7 +174,7 @@
                 </div>
             </div>
 
-            <div id="key_area_logging" class="slide step" style="background-color: rgb(223, 223, 223);" data-x="0" data-y="1200" data-z="100">
+            <div id="key_area_logging" class="slide step" style="background-color: rgb(223, 223, 223);" data-x="1600" data-y="1500" data-z="100">
                 <div>
                     <div class="topCentre redText"><b>The Truth Is In The Logs</b></div>
                 </div>
@@ -229,14 +260,14 @@
             </div>
 
             <div id="poll" class="backgroundSettings step slide" data-x="4000" data-y="1000" data-z="3100" data-rotate-x="90" data-rotate-y="90" data-rotate-z="300" data-rotate-order="xyz">
-                <div class="topCentre whiteText"><b>http://etc.ch/qRTk</b>
-                    <object style="position: relative; left: 3.5em" type="text/html" data="http://etc.ch/qRTk/?qr" width="1024px" height="768px"></object>
+                <div class="topCentre whiteText"><b>https://etc.ch/UWwe</b>
+                    <object style="position: relative; left: 0.5em" type="text/html" data="https://etc.ch/UWwe/?qr" width="580px" height="580px"></object>
 
                 </div>
             </div>
 
             <div id="whatisPoll" class="wrapper step" data-x="4000" data-y="1000" data-z="5100" data-rotate-x="90" data-rotate-y="90" data-rotate-z="300" data-rotate-order="xyz">
-                <object style="position: relative; right: 2em" type="text/html" data="https://directpoll.com/r?XDbzPBd3ixYqg8oulA23yY7iNjyukzN2S1h7IwPyW" width="1024px" height="768px">
+                <object style="position: relative; right: 2em" type="text/html" data="https://directpoll.com/r?XDbzPBd3ixYqg8z1vfDdX9JU5AvdQtDC7g9Kd2bIo1mLwO" width="1024px" height="768px">
                 </object>
             </div>
 
@@ -249,7 +280,24 @@
                 </video>
                 <div></div>
             </div>
-                    
+
+            
+            <div id="story_time2" class="step " data-x="500" data-y="500" data-z="7000">
+                <img src="images/Not-every-story-has-a-happy-ending.jpg" style="height: 180%; width: 180%;position: relative; right: 7em" >  
+                <div class="notes">
+                    <p>There was a company, let's call them CodeCraft, their flagship project "Harmony" started experiencing intermittent failures</p>
+                    <p>This time however, staff calmly scanned the central dashboard</p>
+                    <p>An alert flashed alerting the team to a deviation from the norm</p>
+                    <p>Staff was work with their observability tool and jump to tracing related to the event</p>
+                    <p>After identifying a problem with the login filter section of the trace they started poking at the right logs</p>
+                    <p>The problem was identified, and a remediation implemented while a fix was in the pipeline.</p>
+                    <p>Escalation paths were notified but the incident was handled without having to work through the night</p>
+                </div>
+            </div>
+
+            <div id="end" class="step " data-x="1500" data-y="1500" data-z="8500">
+                <img src="images/You-Can-End-Of-Story.jpg" style="height: 50%; width: 150% ;position: relative; right: 5em" >  
+            </div>
             <!-- These load the actual JS. In this case a relative path to a js folder-->
             <script src="js/impress.js"></script>
             <script src="js/highlight.pack.js"></script>
